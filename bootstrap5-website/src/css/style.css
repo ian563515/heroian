@@ -1,0 +1,209 @@
+/* 淺色主題（預設） */
+body {
+    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+    color: #232526;
+}
+.card {
+    background: #fff;
+    color: #232526;
+}
+.btn-custom {
+    background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+    color: #fff;
+}
+.footer {
+    background: #f8f9fa;
+    color: #232526;
+}
+
+/* 深色主題 */
+body.bg-dark {
+    background: linear-gradient(135deg, #232526 0%, #414345 100%);
+    color: #f8f9fa;
+}
+body.bg-dark .card {
+    background: rgba(30,32,34,0.95);
+    color: #f8f9fa;
+}
+body.bg-dark .btn-custom {
+    background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+    color: #fff;
+    text-shadow: 0 0 8px #00c6ff;
+}
+body.bg-dark .footer {
+    background: #343a40;
+    color: #f8f9fa;
+}
+
+body {
+    background: linear-gradient(135deg, #232526 0%, #414345 100%);
+    color: #e0eafc;
+    font-family: 'Orbitron', 'Share Tech Mono', 'Segoe UI', Arial, sans-serif;
+    letter-spacing: 1px;
+}
+h1, h2, h3, .navbar-brand {
+    color: #00c6ff;
+    text-shadow: 0 0 8px #00c6ff88;
+}
+.card {
+    color: #f8f9fa; /* 卡片內文字也設亮色 */
+}
+
+.navbar {
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #0f2027 0%, #2c5364 100%);
+    color: #e0eafc;
+}
+
+.footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.card {
+    margin: 20px 0;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 1rem;
+    background: rgba(30, 32, 34, 0.95);
+    transition: transform 0.3s;
+}
+.card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 0 24px #00c6ff99, 0 4px 24px rgba(0,0,0,0.08);
+    border-color: #00c6ff;
+}
+
+.card {
+    background: rgba(30,32,34,0.98);
+    box-shadow: 0 0 24px #00c6ff44, 0 4px 24px rgba(0,0,0,0.08);
+    border-radius: 1rem;
+    border: 1px solid #00c6ff33;
+    color: #f8f9fa;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+.card:hover {
+    box-shadow: 0 0 32px #00c6ff99, 0 8px 32px #2575fc44;
+    transform: scale(1.03);
+}
+
+.btn-custom {
+    background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+    color: #fff;
+    text-shadow: 0 0 8px #00c6ff;
+    box-shadow: 0 0 16px #00c6ff66;
+    border-radius: 2rem;
+    font-weight: 600;
+    transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+.btn-custom:hover {
+    background: linear-gradient(90deg, #0072ff 0%, #00c6ff 100%);
+    box-shadow: 0 0 24px #00c6ff99;
+    transform: scale(1.08);
+}
+.btn-custom:active {
+  transform: scale(0.96);
+  box-shadow: 0 0 24px #00c6ff99;
+}
+
+.btn-neon {
+  background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  box-shadow: 0 0 16px #00c6ff66, 0 0 4px #0072ff88;
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+.btn-neon:hover {
+  box-shadow: 0 0 32px #00c6ffcc, 0 0 8px #0072ffcc;
+  transform: scale(1.08);
+}
+
+.collapse.fade {
+  transition: opacity 0.5s;
+  opacity: 0;
+}
+.collapse.show.fade {
+  opacity: 1;
+}
+
+.card, .btn, .form-control {
+    border-radius: 1rem !important;
+}
+.mt-5, .mb-3 {
+    margin-top: 2rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.2rem #00c6ff55;
+    border-color: #00c6ff;
+}
+
+.toast {
+    border-radius: 1rem;
+    box-shadow: 0 2px 12px rgba(106,17,203,0.12);
+    font-weight: 500;
+}
+
+body, h1, h2, h3, .navbar-brand {
+    font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+    letter-spacing: 1px;
+}
+
+.form-label, .form-control {
+    color: #f8f9fa;
+}
+.form-control {
+    background: rgba(30,32,34,0.95);
+}
+
+/* FAQ 區塊深色美化 */
+.accordion-item {
+    background: rgba(30,32,34,0.98);
+    border-radius: 1rem;
+    box-shadow: 0 2px 12px #00c6ff22;
+    border: 1px solid #232526;
+    color: #f8f9fa;
+}
+.accordion-button {
+    background: linear-gradient(90deg, #232526 0%, #414345 100%);
+    color: #00c6ff;
+    font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+    font-weight: 600;
+}
+.accordion-button:not(.collapsed) {
+    background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+    color: #fff;
+    box-shadow: 0 0 8px #00c6ff88;
+}
+.accordion-body {
+    background: rgba(30,32,34,0.95);
+    color: #f8f9fa;
+    border-radius: 0.5rem;
+}
+
+.hr-tech {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+  box-shadow: 0 0 8px #00c6ff88;
+  margin: 2rem 0;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s forwards;
+}
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
