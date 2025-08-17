@@ -1,54 +1,53 @@
-# Bootstrap 5 Website
+# 神龍英雄科技部落格
 
-This project is a simple website built using Bootstrap 5, showcasing a clean and modern design. Below are the details on how to set up and use the project.
+一個使用 Bootstrap 5 構建的現代化科技部落格網站，具有霓虹燈光主題和互動功能，專注於分享 AI、雲端、前端、後端等最新技術與知識。
 
-## Project Structure
+## 功能特色
 
-```
-bootstrap5-website
-├── src
-│   ├── index.html        # Main homepage using Bootstrap 5
-│   ├── css
-│   │   └── style.css     # Custom CSS styles
-│   ├── js
-│   │   └── main.js       # JavaScript for interactivity
-│   └── types
-│       └── index.ts      # TypeScript types and interfaces
-├── package.json          # npm configuration file
-├── tsconfig.json         # TypeScript configuration file
-└── README.md             # Project documentation
-```
+- 🎨 霓虹燈光科技風格主題
+- 🌓 明暗主題切換功能
+- 📝 文章系統與分類
+- 💬 留言與互動功能
+- 📱 響應式設計，支援各種裝置
+- ✨ 粒子背景效果
+- 🔍 表單驗證與即時反饋
 
-## Getting Started
+## 技術棧
 
-### Prerequisites
+- HTML5
+- CSS3 (自定義霓虹燈光樣式)
+- JavaScript (ES6+)
+- Bootstrap 5 (UI框架)
+- TypeScript (類型定義)
+- Particles.js (背景效果)
 
-- Node.js and npm installed on your machine.
+## 專案結構
 
-### Installation
+heroian
+├── README.md # 專案文件
+├── tsconfig.json # TypeScript 配置
+└── src/
+├── index.html # 首頁
+├── articles.html # 文章列表頁
+├── article1.html # 文章詳情頁
+├── 32.png # 網站圖標
+├── css/
+│ └── style.css # 自定義樣式
+├── js/
+│ └── main.js # 主要 JavaScript 功能
+└── types/
+└── index.ts # TypeScript 類型定義
 
-1. Clone the repository:
-   ```
+## 快速開始
+
+### 前置需求
+
+- 現代網�浏览器 (Chrome, Firefox, Edge, Safari)
+- 不需要安裝額外軟體，可直接打開 index.html
+
+### 安裝
+
+1. 下載專案或複製代碼：
+   ```bash
    git clone <repository-url>
-   cd bootstrap5-website
-   ```
-
-2. Install the dependencies:
-   ```
-   npm install
-   ```
-
-### Usage
-
-- To run the website, open `src/index.html` in your web browser.
-- For development, you can set up a local server using tools like Live Server or any other preferred method.
-
-### Customization
-
-- Modify `src/css/style.css` to add or override styles.
-- Update `src/js/main.js` to implement additional interactivity.
-- Use `src/types/index.ts` to define any TypeScript types you need for your project.
-
-### License
-
-This project is licensed under the MIT License. See the LICENSE file for more details.
+   cd heroian
