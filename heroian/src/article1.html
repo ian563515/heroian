@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 智能應用入門 | 神龍英雄科技部落格</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="icon" type="image/x-icon" href="32.png">
+</head>
+<body>
+    <!-- 粒子背景 -->
+    <div id="particles-js" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;"></div>
+    <div class="container position-relative">
+        <!-- 導覽列 -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded mt-4 mb-5 px-3">
+            <a class="navbar-brand fw-bold" href="index.html" style="font-family:'Orbitron',sans-serif;">神龍英雄部落格</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">首頁</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">關於我</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="articles.html">文章</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faqAccordion">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contactForm">聯絡</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <article class="mt-5">
+        <h1 class="fw-bold mb-4" style="font-family:'Orbitron',sans-serif; color:#00c6ff;">AI 智能應用入門</h1>
+        <div class="mb-3 text-secondary">
+            <i class="bi bi-person"></i> 小明
+            <i class="bi bi-calendar"></i> 2025/08/20
+        </div>
+        <hr class="hr-tech">
+        <section class="mb-5">
+            <h2 class="h3 mb-4">什麼是人工智慧？</h2>
+            <p>人工智慧（AI）是計算機科學的一個分支，旨在創建能夠執行通常需要人類智能的任務的系統。這包括學習、推理、問題解決、感知和語言理解等能力。</p>
+            <p>簡單來說，AI 是讓機器能夠模擬人類思考過程的技術，使其能夠像人類一樣學習、適應和解決問題。</p>
+        </section>
+        
+        <section class="mb-5">
+            <h2 class="h3 mb-4">AI 在日常生活中的應用</h2>
+            <div class="card mb-4 bg-dark text-white">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">個人助理</h5>
+                    <p class="card-text">如 Siri、Alexa 和 Google Assistant，可以幫助我們安排日程、回答問題和控制智能家居設備。這些 AI 助手能理解語音命令，提供個人化服務。</p>
+                </div>
+            </div>
+            
+            <div class="card mb-4 bg-dark text-white">
+                <div class="card-body">
+                    <h5 class="card-title text-warning">推薦系統</h5>
+                    <p class="card-text">Netflix、Amazon 和 Spotify 等平台使用 AI 來分析您的偏好並推薦相關內容。這些系統會學習您的行為模式，預測您可能喜歡的內容。</p>
+                </div>
+            </div>
+            
+            <div class="card mb-4 bg-dark text-white">
+                <div class="card-body">
+                    <h5 class="card-title text-success">醫療診斷</h5>
+                    <p class="card-text">AI 系統可以幫助醫生分析醫療影像，如 X 光片和 MRI，以識別潛在的健康問題。這些系統能夠比人類更快速地分析大量數據，提高診斷準確性。</p>
+                </div>
+            </div>
+            
+            <div class="card bg-dark text-white">
+                <div class="card-body">
+                    <h5 class="card-title text-info">自動駕駛</h5>
+                    <p class="card-text">汽車製造商如 Tesla 正在開發使用 AI 來感知環境並做出決策的自主駕駛系統。這些系統使用計算機視覺和機器學習來識別路況、行人和其他車輛。</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="mb-5">
+            <h2 class="h3 mb-4">如何開始學習 AI？</h2>
+            <div class="alert alert-info">
+                <h5 class="alert-heading"><i class="bi bi-lightbulb"></i> 學習路徑概覽</h5>
+                <p class="mb-0">對於初學者來說，以下是開始 AI 學習之旅的幾個步驟：</p>
+            </div>
+            
+            <div class="row mb-4">
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-primary">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">1. 掌握基礎知識</h5>
+                            <p class="card-text">學習數學（特別是線性代數、概率和統計）和編程（特別是 Python）。這些是構建 AI 模型的基礎。</p>
+                            <ul>
+                                <li>線性代數：矩陣運算、向量空間</li>
+                                <li>概率與統計：分佈、假設檢驗</li>
+                                <li>Python 編程：NumPy、Pandas 庫</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-warning">
+                        <div class="card-body">
+                            <h5 class="card-title text-warning">2. 了解機器學習</h5>
+                            <p class="card-text">從監督學習、非監督學習和強化學習等基本概念開始。理解不同類型的算法及其適用場景。</p>
+                            <ul>
+                                <li>監督學習：分類、回歸</li>
+                                <li>非監督學習：聚類、降維</li>
+                                <li>強化學習：代理、環境、獎勵</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mb-4">
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-success">
+                        <div class="card-body">
+                            <h5 class="card-title text-success">3. 實踐項目</h5>
+                            <p class="card-text">通過 Kaggle 等平台參與競賽，或使用 TensorFlow 和 PyTorch 等框架構建自己的模型。實踐是掌握 AI 技術的關鍵。</p>
+                            <ul>
+                                <li>圖像分類：辨識貓狗、手寫數字</li>
+                                <li>自然語言處理：情感分析、文本生成</li>
+                                <li>推薦系統：電影推薦、商品推薦</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-info">
+                        <div class="card-body">
+                            <h5 class="card-title text-info">4. 持續學習</h5>
+                            <p class="card-text">AI 領域發展迅速，跟進最新研究和技術至關重要。閱讀研究論文、參加線上課程和加入 AI 社區。</p>
+                            <ul>
+                                <li>研究論文：arXiv、頂會論文</li>
+                                <li>線上課程：Coursera、edX</li>
+                                <li>AI 社區：GitHub、Reddit</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="mb-5">
+            <h2 class="h3 mb-4">未來展望</h2>
+            <p>AI 的發展前景無限，從更智能的個人助手到解決全球性挑戰的系統，AI 將繼續改變我們的生活和工作方式。</p>
+            
+            <div class="card bg-dark text-white mb-4">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-globe"></i> 全球性挑戰</h5>
+                    <p>AI 有潛力幫助解決一些世界上最棘手的問題，如氣候變化、疾病治療和資源管理。通過分析大量數據和識別複雜模式，AI 可以提供人類難以實現的解決方案。</p>
+                </div>
+            </div>
+            
+            <div class="card bg-dark text-white">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-shield-exclamation"></i> 倫理與挑戰</h5>
+                    <p>然而，隨著 AI 的發展，我們也必須考慮倫理問題、隱私保護和就業市場變化等挑戰。確保 AI 的發展符合人類福祉，需要我們共同制定相應的規範和準則。</p>
+                </div>
+            </div>
+        </section>
+        
+        <div class="alert alert-success mt-5">
+            <i class="bi bi-lightbulb"></i> <strong>小貼士：</strong>開始 AI 學習之旅時，不要害怕犯錯。實踐是掌握 AI 技術的關鍵，每個項目都將帶來寶貴的經驗。
+        </div>
+        
+        <!-- 留言區 -->
+        <div class="card mt-5 p-4 shadow">
+            <h4 class="mb-3" style="font-family:'Orbitron',sans-serif; color:#00c6ff;">留言區</h4>
+            <form id="commentForm" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="commentName" class="form-label">暱稱</label>
+                    <input type="text" class="form-control" id="commentName" required>
+                    <div class="invalid-feedback">請輸入暱稱。</div>
+                </div>
+                <div class="mb-3">
+                    <label for="commentContent" class="form-label">留言內容</label>
+                    <textarea class="form-control" id="commentContent" rows="3" required></textarea>
+                    <div class="invalid-feedback">請輸入留言。</div>
+                </div>
+                <button type="submit" class="btn btn-neon w-100">送出留言</button>
+            </form>
+            <div id="commentList" class="mt-4"></div>
+        </div>
+
+        <a href="index.html" class="btn btn-neon mt-4">回首頁</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    // 留言區互動
+    const commentForm = document.getElementById('commentForm');
+    const commentList = document.getElementById('commentList');
+    if (commentForm) {
+        commentForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            if (commentForm.checkValidity()) {
+                const name = document.getElementById('commentName').value || '匿名';
+                const content = document.getElementById('commentContent').value;
+                const commentItem = document.createElement('div');
+                commentItem.className = 'border-bottom py-2';
+                commentItem.innerHTML = `<strong style="color:#00c6ff;">${name}</strong>：${content}`;
+                commentList.prepend(commentItem);
+                commentForm.reset();
+                commentForm.classList.remove('was-validated');
+            } else {
+                commentForm.classList.add('was-validated');
+            }
+        });
+    }
+    </script>
+    <script>
+        // 初始化粒子背景
+        particlesJS('particles-js', {
+          "particles": {
+            "number": { "value": 80 },
+            "color": { "value": "#00c6ff" },
+            "shape": { "type": "circle" },
+            "opacity": { "value": 0.6 },
+            "size": { "value": 3 },
+            "line_linked": {
+              "enable": true,
+              "distance": 130,
+              "color": "#00c6ff",
+              "opacity": 0.5,
+              "width": 1.2
+            },
+            "move": { "enable": true, "speed": 2.5 }
+          },
+          "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+              "onhover": { "enable": true, "mode": "grab" },
+              "onclick": { "enable": true, "mode": "push" }
+            },
+            "modes": {
+              "grab": { "distance": 150, "line_linked": { "opacity": 0.8 } },
+              "push": { "particles_nb": 4 }
+            }
+          },
+          "retina_detect": true
+        });
+    </script>
+    
+    <!-- 頁尾 -->
+    <footer class="footer mt-5 text-center py-3">
+        © 2025 神龍英雄科技部落格 | 由 神龍小英雄 製作
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>物聯網安全實務 | 神龍英雄科技部落格</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="icon" type="image/x-icon" href="32.png">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+</head>
+<body>
+    <!-- 粒子背景 -->
+    <div id="particles-js" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;"></div>
+    <div class="container position-relative">
+        <!-- 導覽列 -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded mt-4 mb-5 px-3">
+            <a class="navbar-brand fw-bold" href="index.html" style="font-family:'Orbitron',sans-serif;">神龍英雄部落格</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">首頁</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">關於我</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="articles.html">文章</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faqAccordion">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contactForm">聯絡</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <article class="mt-5">
+            <h1 class="fw-bold mb-4" style="font-family:'Orbitron',sans-serif; color:#00c6ff;">物聯網安全實務</h1>
+            <div class="mb-3 text-secondary">
+                <i class="bi bi-person"></i> 小華
+                <i class="bi bi-calendar"></i> 2025/08/10
+            </div>
+            <hr class="hr-tech">
+
+            <section class="mb-5">
+                <h2 class="h3 mb-4">物聯網安全挑戰概述</h2>
+                <p>隨著物聯網設備的爆炸性增長，安全問題日益凸顯。物聯網設備的數量龐大、種類繁多、部署分散，且大多數設備計算能力有限，這使得傳統的安全防護措施難以直接應用。</p>
+
+                <div class="alert alert-danger">
+                    <h5 class="alert-heading"><i class="bi bi-exclamation-triangle"></i> 物聯網安全現狀</h5>
+                    <p class="mb-0">根據研究數據，超過 70% 的物聯網設備存在嚴重安全漏洞，而超過 80% 的企業曾遭受過物聯網安全攻擊。這些數據表明，物聯網安全已經成為不可忽視的重要議題。</p>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary"><i class="bi bi-shield-lock"></i> 物聯網設備的特殊性</h5>
+                                <p class="card-text">物聯網設備與傳統計算設備相比，具有以下特點，這些特點也帶來了安全挑戰：</p>
+                                <ul>
+                                    <li><strong>資源受限</strong>：大多數物聯網設備計算能力、內存和存儲空間有限，難以運行複雜的安全軟件</li>
+                                    <li><strong>長生命週期</strong>：設備可能運行多年，難以及時更新和安全補丁</li>
+                                    <li><strong>物理暴露</strong>：設備通常部署在無人看管的地方，易受物理攻擊</li>
+                                    <li><strong>網絡多樣性</strong>：使用各種網絡技術，如 Wi-Fi、藍牙、Zigbee、LoRa 等，每種都有其安全弱點</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 border-warning">
+                            <div class="card-body">
+                                <h5 class="card-title text-warning"><i class="bi bi-bug"></i> 常見的安全威脅</h5>
+                                <p class="card-text">物聯網面臨的常見安全威脅包括：</p>
+                                <ul>
+                                    <li><strong>未授權訪問</strong>：弱密碼或默認憑證導致的設備被未授權訪問</li>
+                                    <li><strong>數據洩露</strong>：敏感數據在傳輸或存儲過程中被竊取</li>
+                                    <li><strong>中間人攻擊</strong>：攻擊者截取並篡改設備與服務器之間的通信</li>
+                                    <li><strong>DDoS 攻擊</strong>：利用大量受感染的物聯網設務發起分布式拒絕服務攻擊</li>
+                                    <li><strong>固件篡改</strong>：惡意軟件被植入設備固件，難以檢測和清除</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h3 mb-4">物聯網安全框架</h2>
+                <div class="card bg-dark text-white mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-diagram-3"></i> 分層安全模型</h5>
+                        <p>為了全面保護物聯網系統，我們需要採用分層安全模型，從設備到雲端，每個層面都實施相應的安全措施：</p>
+
+                        <div class="timeline mt-4">
+                            <div class="timeline-item">
+                                <div class="timeline-badge bg-primary">
+                                    <i class="bi bi-cpu"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <h5>設備層安全</h5>
+                                    <p>設備層是物聯網系統的基礎，安全措施包括：</p>
+                                    <ul>
+                                        <li><strong>安全啟動</strong>：確保設備只運行授權的軟件</li>
+                                        <li><strong>安全存儲</strong>：保護敏感數據如密鑰和憑證</li>
+                                        <li><strong>固件完整性檢查</strong>：定期驗證固件未被篡改</li>
+                                        <li><strong>硬件安全模塊</strong>：使用專用硬件保護密鑰和敏感操作</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="timeline-badge bg-warning">
+                                    <i class="bi bi-wifi"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <h5>通信層安全</h5>
+                                    <p>通信層負責設備之間以及設備與服務器之間的數據傳輸，安全措施包括：</p>
+                                    <ul>
+                                        <li><strong>加密傳輸</strong>：使用 TLS/DTLS 等協議加密數據傳輸</li>
+                                        <li><strong>身份認證</strong>：設備與服務器之間相互驗證身份</li>
+                                        <li><strong>訪問控制</strong>：基於角色的訪問控制，確保只有授權設備能訪問資源</li>
+                                        <li><strong>網絡隔離</strong>：將物聯網設備網絡與企業核心網絡隔離</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="timeline-badge bg-success">
+                                    <i class="bi bi-cloud"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <h5>平台層安全</h5>
+                                    <p>平台層負責數據處理、應用程序運行和系統管理，安全措施包括：</p>
+                                    <ul>
+                                        <li><strong>數據加密</strong>：靜態數據加密，保護存儲的數據</li>
+                                        <li><strong>應用沙盒</strong>：隔離不同應用程序，限制權限</li>
+                                        <li><strong>安全 API</strong>：實施 API 網關和安全監控</li>
+                                        <li><strong>入侵檢測</strong>：監控異常行為和潛在威脅</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="timeline-badge bg-info">
+                                    <i class="bi bi-shield-check"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <h5>管理層安全</h5>
+                                    <p>管理層負責整個物聯網系統的規劃、運營和維護，安全措施包括：</p>
+                                    <ul>
+                                        <li><strong>安全開發生命週期</strong>：在開發階段就考慮安全性</li>
+                                        <li><strong>漏洞管理</strong>：定期進行安全評估和漏洞掃描</li>
+                                        <li><strong>事件響應</strong>：制定安全事件響應計劃</li>
+                                        <li><strong>合規性管理</strong>：確保符合相關法規和標準</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h3 mb-4">關鍵安全技術</h2>
+                <div class="row mb-4">
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary"><i class="bi bi-key"></i> 加密與密钥管理</h5>
+                                <p class="card-text">加密是保護物聯網系統的核心技術，包括：</p>
+                                <ul>
+                                    <li><strong>對稱加密</strong>：使用相同的密鑰進行加密和解密，適用於資源受限的設備</li>
+                                    <li><strong>非對稱加密</strong>：使用公鑰和私鑰，適用於密钥交換和數字簽名</li>
+                                    <li><strong>混合加密</strong>：結合對稱和非對稱加密的優點</li>
+                                    <li><strong>密钥輪換</strong>：定期更換密钥，降低密钥洩露的風險</li>
+                                    <li><strong>硬件安全模塊</strong>：使用專用硬件安全存儲和管理密钥</li>
+                                </ul>
+                                <pre><code>// 示例：使用 AES 進行數據加密
+const crypto = require('crypto');
+
+const algorithm = 'aes-256-cbc';
+const key = crypto.randomBytes(32); // 256位密钥
+const iv = crypto.randomBytes(16);  // 初始化向量
+
+function encrypt(text) {
+  let cipher = crypto.createCipheriv(algorithm, Buffer.from(key), iv);
+  let encrypted = cipher.update(text);
+  encrypted = Buffer.concat([encrypted, cipher.final()]);
+  return { iv: iv.toString('hex'), encryptedData: encrypted.toString('hex') };
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 border-warning">
+                            <div class="card-body">
+                                <h5 class="card-title text-warning"><i class="bi bi-fingerprint"></i> 身份認證與授權</h5>
+                                <p class="card-text">確保只有授權設備和用戶能訪問系統，技術包括：</p>
+                                <ul>
+                                    <li><strong>多因素認證</strong>：結合多種證明方式，提高安全性</li>
+                                    <li><strong>OAuth 2.0/OpenID Connect</strong>：標準化的身份認證框架</li>
+                                    <li><strong>基於證書的認證</strong>：使用 X.509 證書進行設備身份驗證</li>
+                                    <li><strong>生物識別</strong>：指紋、臉部識別等生物特徵驗證</li>
+                                    <li><strong>零知識證明</strong>：在不洩露敏感信息的情況下驗證身份</li>
+                                </ul>
+                                <pre><code>// 示例：基於 JWT 的設備認證
+const jwt = require('jsonwebtoken');
+
+// 生成設備令牌
+function generateDeviceToken(deviceId) {
+  const payload = {
+    deviceId: deviceId,
+    type: 'device',
+    exp: Math.floor(Date.now() / 1000) + (60 * 60) // 1小時過期
+  };
+  return jwt.sign(payload, process.env.JWT_SECRET);
+}
+
+// 驗證設備令牌
+function verifyDeviceToken(token) {
+  try {
+    return jwt.verify(token, process.env.JWT_SECRET);
+  } catch (err) {
+    return null;
+  }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 border-success">
+                            <div class="card-body">
+                                <h5 class="card-title text-success"><i class="bi bi-shield-lock"></i> 安全啟動與固件完整性</h5>
+                                <p class="card-text">確保設備只運行授權的軟件，防止惡意軟件植入：</p>
+                                <ul>
+                                    <li><strong>安全引導</strong>：設備啟動時驗證每個組件的完整性</li>
+                                    <li><strong>安全升級</strong>：安全的固件更新機制，防止升級過程中的攻擊</li>
+                                    <li><strong>遠端證書管理</strong>：安全地更新和撤銷設備證書</li>
+                                    <li><strong>運行時完整性檢查</strong>：監控系統完整性，檢測異常行為</li>
+                                </ul>
+                                <pre><code>// 示例：固件完整性檢查
+const crypto = require('crypto');
+const fs = require('fs');
+
+// 計算固件文件的哈希值
+function calculateFirmwareHash(filePath) {
+  const fileBuffer = fs.readFileSync(filePath);
+  const hashSum = crypto.createHash('sha256');
+  hashSum.update(fileBuffer);
+  return hashSum.digest('hex');
+}
+
+// 比較固件哈希值
+function verifyFirmwareIntegrity(filePath, expectedHash) {
+  const actualHash = calculateFirmwareHash(filePath);
+  return actualHash === expectedHash;
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 border-info">
+                            <div class="card-body">
+                                <h5 class="card-title text-info"><i class="bi bi-eye"></i> 安全監控與入侵檢測</h5>
+                                <p class="card-text">持續監控系統狀態，及早發現並響應安全威脅：</p>
+                                <ul>
+                                    <li><strong>日誌分析</strong>：收集和分析系統日誌，識別異常模式</li>
+                                    <li><strong>行為分析</strong>：建立正常行為基線，檢測偏離正常模式的行為</li>
+                                    <li><strong>異常檢測</strong>：使用機器學習技術識別異常活動</li>
+                                    <li><strong>安全信息與事件管理 (SIEM)</strong>：集中收集、分析和關聯安全事件</li>
+                                </ul>
+                                <pre><code>// 示例：簡單的異常檢測
+class AnomalyDetector {
+  constructor() {
+    this.normalRequests = new Map();
+    this.threshold = 3; // 請求次數閾值
+  }
+
+  // 記錄正常請求
+  recordRequest(deviceId, endpoint) {
+    const key = `${deviceId}:${endpoint}`;
+    const count = this.normalRequests.get(key) || 0;
+    this.normalRequests.set(key, count + 1);
+  }
+
+  // 檢測異常請求
+  detectAnomaly(deviceId, endpoint) {
+    const key = `${deviceId}:${endpoint}`;
+    const count = this.normalRequests.get(key) || 0;
+
+    if (count > this.threshold) {
+      return false; // 正常請求
+    } else {
+      return true; // 異常請求
+    }
+  }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h3 mb-4">行業安全標準與合規性</h2>
+                <div class="card bg-dark text-white mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-book-half"></i> 主要安全標準</h5>
+                        <p>為了確保物聯網系統的安全性，許多行業已經制定了相應的安全標準和指南：</p>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6 mb-3">
+                                <h6>通用標準：</h6>
+                                <ul>
+                                    <li><strong>NIST IoT 框架</strong>：美國國家標準技術研究院物聯網安全框架</li>
+                                    <li><strong>ISO/IEC 27001</strong>：信息安全管理體系標準</li>
+                                    <li><strong>OWASP IoT Top 10</strong>：物聯網十大安全風險</li>
+                                    <li><strong>CIS Controls</strong>：關鍵信息系統控制措施</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h6>行業特定標準：</h6>
+                                <ul>
+                                    <li><strong>IEC 62443</strong>：工業自動化和控制系統安全標準</li>
+                                    <li><strong>GDPR</strong>：歐盟通用數據保護法規</li>
+                                    <li><strong>HIPAA</strong>：美國健康保際可移植性和責任法案</li>
+                                    <li><strong>PCI DSS</strong>：支付卡行業數據安全標準</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-check-circle"></i> 合規性實踐</h5>
+                        <p>確保物聯網系統符合相關法規和標準，需要採取以下措施：</p>
+
+                        <div class="accordion" id="complianceAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#privacyCompliance">
+                                        隱私保護合規
+                                    </button>
+                                </h2>
+                                <div id="privacyCompliance" class="accordion-collapse collapse" data-bs-parent="#complianceAccordion">
+                                    <div class="accordion-body">
+                                        <ul>
+                                            <li><strong>數據最小化</strong>：只收集和處理必要的個人數據</li>
+                                            <li><strong>目的限制</strong>：明確數據使用目的，不超出範圍使用</li>
+                                            <li><strong>用戶同意</strong>：獲得用戶明確的數據收集和使用同意</li>
+                                            <li><strong>數據安全</strong>：採取適當技術和管理措施保護數據</li>
+                                            <li><strong>數據主體權利</strong>：保障用戶訪問、更正和刪除其數據的權利</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#securityCompliance">
+                                        安全合規
+                                    </button>
+                                </h2>
+                                <div id="securityCompliance" class="accordion-collapse collapse" data-bs-parent="#complianceAccordion">
+                                    <div class="accordion-body">
+                                        <ul>
+                                            <li><strong>風險評估</strong>：定期進行安全風險評估</li>
+                                            <li><strong>安全控制</strong>：實施適當的安全控制措施</li>
+                                            <li><strong>供應商管理</strong>：確保供應商產品和服務符合安全要求</li>
+                                            <li><strong>事件響應</strong>：制定並測試安全事件響應計劃</li>
+                                            <li><strong>持續監控</strong>：持續監控安全狀態並進行改進</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#industryCompliance">
+                                        行業特定合規
+                                    </button>
+                                </h2>
+                                <div id="industryCompliance" class="accordion-collapse collapse" data-bs-parent="#complianceAccordion">
+                                    <div class="accordion-body">
+                                        <ul>
+                                            <li><strong>醫療行業</strong>：遵守 HIPAA 等法規，保護患者數據</li>
+                                            <li><strong>金融行業</strong>：遵守 PCI DSS、GLBA 等法規，保護金融數據</li>
+                                            <li><strong>工業控制系統</strong>：遵守 IEC 62443，確保工業安全</li>
+                                            <li><strong>能源行業</strong>：遵守 NERC CIP，保護關鍵基礎設施</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h3 mb-4">安全開發實踐</h2>
+                <div class="alert alert-info">
+                    <h5 class="alert-heading"><i class="bi bi-tools"></i> 安全開發生命週期</h5>
+                    <p class="mb-0">將安全整合到物聯網產品的整個生命週期中，從需求分析到退役，每個階段都應考慮安全性。</p>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary"><i class="bi bi-pencil-square"></i> 需求與設計階段</h5>
+                                <p class="card-text">在產品開發的早期階段就應考慮安全性：</p>
+                                <ul>
+                                    <li><strong>安全需求分析</strong>：明確產品的安全需求和目標</li>
+                                    <li><strong>威脅建模</strong>：識別潛在威脅並評估風險</li>
+                                    <li><strong>安全架構設計</strong>：設計安全的系統架構和數據流</li>
+                                    <li><strong>隱私設計</strong>：將隱私保護納入產品設計</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 border-warning">
+                            <div class="card-body">
+                                <h5 class="card-title text-warning"><i class="bi bi-code-slash"></i> 實現與測試階段</h5>
+                                <p class="card-text">在開發和測試過程中實施安全措施：</p>
+                                <ul>
+                                    <li><strong>安全編碼規範</strong>：遵循安全編碼最佳實踐</li>
+                                    <li><strong>安全代碼審查</strong>：定期進行代碼安全審查</li>
+                                    <li><strong>動態應用程序安全測試</strong>：使用工具掃描代碼中的漏洞</li>
+                                    <li><strong>滲透測試</strong>：模擬攻擊者測試系統安全性</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 border-success">
+                            <div class="card-body">
+                                <h5 class="card-title text-success"><i class="bi bi-truck"></i> 部署與維護階段</h5>
+                                <p class="card-text">產品部署後持續維護安全性：</p>
+                                <ul>
+                                    <li><strong>安全部署</strong>：確保部署過程中的安全性</li>
+                                    <li><strong>持續監控</strong>：監控系統安全狀態和異常行為</li>
+                                    <li><strong>漏洞管理</strong>：及時響應新發現的漏洞</li>
+                                    <li><strong>安全更新</strong>：定期發布安全補丁和更新</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 border-info">
+                            <div class="card-body">
+                                <h5 class="card-title text-info"><i class="bi bi-arrow-counterclockwise"></i> 退役階段</h5>
+                                <p class="card-text">產品生命週期結束時的安全處理：</p>
+                                <ul>
+                                    <li><strong>數據清除</strong>：安全地擦除設備中的敏感數據</li>
+                                    <li><strong>設備回收</strong>：安全地處理或回收退役設備</li>
+                                    <li><strong>文檔更新</strong>：更新安全文檔和配置</li>
+                                    <li><strong>經驗總結</strong>：總結安全經驗，應用於未來項目</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="alert alert-success mt-5">
+                <i class="bi bi-lightbulb"></i> <strong>安全實踐建議：</strong>物聯網安全不是一次性的任務，而是一個持續的過程。企業應將安全納入整個產品生命週期，並定期評估和改進安全措施。
+            </div>
+        </article>
+
+        <!-- 留言區 -->
+        <div class="card mt-5 p-4 shadow">
+            <h4 class="mb-3" style="font-family:'Orbitron',sans-serif; color:#00c6ff;">留言區</h4>
+            <form id="commentForm" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="commentName" class="form-label">暱稱</label>
+                    <input type="text" class="form-control" id="commentName" required>
+                    <div class="invalid-feedback">請輸入暱稱。</div>
+                </div>
+                <div class="mb-3">
+                    <label for="commentContent" class="form-label">留言內容</label>
+                    <textarea class="form-control" id="commentContent" rows="3" required></textarea>
+                    <div class="invalid-feedback">請輸入留言。</div>
+                </div>
+                <button type="submit" class="btn btn-neon w-100">送出留言</button>
+            </form>
+            <div id="commentList" class="mt-4"></div>
+        </div>
+
+        <a href="articles.html" class="btn btn-neon mt-4">返回文章列表</a>
+    </div>
+
+    <!-- 頁尾 -->
+    <footer class="footer mt-5 text-center py-3">
+        © 2025 神龍英雄科技部落格 | 由 神龍小英雄 製作
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main_fixed.js"></script>
+    <script>
+        // 初始化粒子背景
+        particlesJS('particles-js', {
+          "particles": {
+            "number": { "value": 80 },
+            "color": { "value": "#00c6ff" },
+            "shape": { "type": "circle" },
+            "opacity": { "value": 0.6 },
+            "size": { "value": 3 },
+            "line_linked": {
+              "enable": true,
+              "distance": 130,
+              "color": "#00c6ff",
+              "opacity": 0.5,
+              "width": 1.2
+            },
+            "move": { "enable": true, "speed": 2.5 }
+          },
+          "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+              "onhover": { "enable": true, "mode": "grab" },
+              "onclick": { "enable": true, "mode": "push" }
+            },
+            "modes": {
+              "grab": { "distance": 150, "line_linked": { "opacity": 0.8 } },
+              "push": { "particles_nb": 4 }
+            }
+          },
+          "retina_detect": true
+        });
+
+        // 留言區互動
+        const commentForm = document.getElementById('commentForm');
+        const commentList = document.getElementById('commentList');
+        if (commentForm) {
+            commentForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+                if (commentForm.checkValidity()) {
+                    const name = document.getElementById('commentName').value || '匿名';
+                    const content = document.getElementById('commentContent').value;
+                    const commentItem = document.createElement('div');
+                    commentItem.className = 'border-bottom py-2';
+                    commentItem.innerHTML = `<strong style="color:#00c6ff;">${name}</strong>：${content}`;
+                    commentList.prepend(commentItem);
+                    commentForm.reset();
+                    commentForm.classList.remove('was-validated');
+                } else {
+                    commentForm.classList.add('was-validated');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

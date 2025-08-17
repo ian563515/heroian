@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於我 | 神龍英雄科技部落格 - 全端工程師與技術博主</title>
+    <meta name="description" content="了解神龍英雄 - 專業全端工程師與技術博主，分享前端開發、後端架構、人工智能等技術領域的專業知識與實務經驗。">
+    <meta name="keywords" content="神龍英雄,關於我,全端工程師,技術博主,前端開發,後端開發,軟體架構">
+    <meta name="author" content="神龍英雄">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yourwebsite.com/about.html">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="icon" type="image/x-icon" href="32.png">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+</head>
+<body>
+    <!-- 粒子背景 -->
+    <div id="particles-js" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;"></div>
+    <div class="container position-relative">
+        <!-- 導覽列 -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded mt-4 mb-5 px-3">
+            <a class="navbar-brand fw-bold" href="index.html" style="font-family:'Orbitron',sans-serif;">神龍英雄部落格</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">首頁</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="about.html">關於我</a></li>
+                    <li class="nav-item"><a class="nav-link" href="articles.html">文章</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faqAccordion">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contactForm">聯絡</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="row mt-5">
+            <div class="col-lg-4 mb-4">
+                <div class="card text-center bg-dark text-white shadow-lg fade-in-scroll">
+                    <div class="card-body p-4">
+                        <div class="mb-4">
+                            <img src="https://yt3.ggpht.com/69CA_J7yns3G40q5qZWGZT3U7VNs6ScCpV82Cj6l1aYig99qgZs2NVsD8MDmi4WFzowuwe77ZQ=s108-c-k-c0x00ffffff-no-rj" class="rounded-circle img-fluid border border-primary border-3" alt="個人照片">
+                        </div>
+                        <h2 class="card-title fw-bold" style="font-family:'Orbitron',sans-serif;">神龍小英雄</h2>
+                        <p class="text-primary mb-0">全端工程師 & 技術博主</p>
+                        <div class="d-flex justify-content-center mt-3 mb-4">
+                            <a href="https://github.com/ian563515" class="text-white me-3"><i class="bi bi-github fs-4"></i></a>
+                            <a href="https://discord.gg/R8DDVx6Xkh" class="text-white me-3"><i class="bi bi-discord fs-4"></i></a>
+                            <a href="https://www.youtube.com/@heroian_102" class="text-white me-3"><i class="bi bi-youtube fs-4"></i></a>
+                            <a href="mailto:ian563515@gmail.com" class="text-white"><i class="bi bi-envelope fs-4"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card bg-dark text-white shadow-lg fade-in-scroll mt-4">
+                    <div class="card-body">
+                        <h4 class="card-title mb-3"><i class="bi bi-tools"></i> 專業技能</h4>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>前端開發</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress bg-secondary">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>後端開發</span>
+                                <span>65%</span>
+                            </div>
+                            <div class="progress bg-secondary">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 65%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>資料庫設計</span>
+                                <span>40%</span>
+                            </div>
+                            <div class="progress bg-secondary">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-0">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>雲端架構</span>
+                                <span>65%</span>
+                            </div>
+                            <div class="progress bg-secondary">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8 mb-4">
+                <div class="card bg-dark text-white shadow-lg fade-in-scroll">
+                    <div class="card-body">
+                        <h2 class="card-title mb-4" style="font-family:'Orbitron',sans-serif;"><i class="bi bi-person-badge"></i> 關於我</h2>
+                        <p>您好！我是神龍小英雄，一名充滿熱情的國中生與全端工程師。我擁有超過 1年半 的網頁開發經驗，專注於創建高效、可擴展且用戶友好的解決方案(應該)。</p>
+
+                        <h4 class="mt-4 mb-3"><i class="bi bi-briefcase"></i> 職業經歷</h4>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-badge bg-primary">
+                                    <i class="bi bi-briefcase"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <h5>目前無職業經歷</h5>
+
+                        <h4 class="mt-4 mb-3"><i class="bi bi-mortarboard"></i> 教育背景</h4>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="card bg-dark text-white h-100 border-primary">
+                                    <div class="card-body">
+                                        <h5 class="card-title">不對外公開</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card bg-dark text-white h-100 border-primary">
+                                    <div class="card-body">
+                                        <h5 class="card-title">不對外公開</h5>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 class="mt-4 mb-3"><i class="bi bi-trophy"></i> 專業成就</h4>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="card bg-dark text-white h-100 border-warning">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><i class="bi bi-award"></i> 最佳技術創新獎</h5>
+                                        <p>獲得 2022 年度公司最佳技術創新獎，表彰在雲端架構遷移項目中的卓越貢獻。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card bg-dark text-white h-100 border-warning">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><i class="bi bi-award"></i> 開源貢獻者</h5>
+                                        <p>活躍的開源社區貢獻者，多個 GitHub 項目獲得超過 1000 顆星，為技術社群做出貢獻。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 class="mt-4 mb-3"><i class="bi bi-book"></i> 著作與分享</h4>
+                        <p>除了日常的開發工作，我熱衷於分享技術知識，幫助更多開發者成長：</p>
+                        <ul>
+                            <li>撰寫技術部落格，涵蓋前端、後端、架構設計等多個領域</li>
+                            <li>在各大技術會議和 Meetup 上發表演講</li>
+                            <li>編寫技術教程和電子書，幫助初學者入門</li>
+                            <li>參與開源項目，貢獻代碼和技術文章</li>
+                        </ul>
+
+                        <div class="alert alert-info mt-4">
+                            <h5 class="alert-heading"><i class="bi bi-lightbulb"></i> 我的技術理念</h5>
+                            <p class="mb-0">我相信技術應該服務於人，而不是相反。優雅的代碼、直觀的用戶界面和高效的系統架構是我的追求。我熱衷於學習新技術，並將其應用於解決現實世界的問題。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="index.html" class="btn btn-neon">回首頁</a>
+        </div>
+
+        <!-- 頁尾 -->
+        <footer class="footer mt-5 text-center py-3">
+            © 2025 神龍英雄科技部落格 | 由 神龍小英雄 製作
+        </footer>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main_fixed.js"></script>
+    <script>
+        // 初始化粒子背景
+        particlesJS('particles-js', {
+          "particles": {
+            "number": { "value": 80 },
+            "color": { "value": "#00c6ff" },
+            "shape": { "type": "circle" },
+            "opacity": { "value": 0.6 },
+            "size": { "value": 3 },
+            "line_linked": {
+              "enable": true,
+              "distance": 130,
+              "color": "#00c6ff",
+              "opacity": 0.5,
+              "width": 1.2
+            },
+            "move": { "enable": true, "speed": 2.5 }
+          },
+          "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+              "onhover": { "enable": true, "mode": "grab" },
+              "onclick": { "enable": true, "mode": "push" }
+            },
+            "modes": {
+              "grab": { "distance": 150, "line_linked": { "opacity": 0.8 } },
+              "push": { "particles_nb": 4 }
+            }
+          },
+          "retina_detect": true
+        });
+
+        // 初始化滾動動畫
+        document.addEventListener('DOMContentLoaded', () => {
+          // 觀察所有需要動畫的元素
+          const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+          };
+
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+              }
+            });
+          }, observerOptions);
+
+          document.querySelectorAll('.fade-in-scroll').forEach(el => {
+            observer.observe(el);
+          });
+        });
+    </script>
+</body>
+</html>

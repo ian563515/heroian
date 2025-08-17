@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理員設定 | 神龍英雄科技部落格後台</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/x-icon" href="/heroian/src/32.png">
+    <style>
+        .sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            padding: 48px 0 0;
+            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+            background-color: #0f2027;
+            color: white;
+        }
+
+        .sidebar-sticky {
+            position: relative;
+            top: 0;
+            height: calc(100vh - 48px);
+            padding-top: .5rem;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.75);
+            padding: 0.75rem 1rem;
+        }
+
+        .sidebar .nav-link.active {
+            color: #fff;
+            background-color: #2c5364;
+        }
+
+        .sidebar .nav-link i {
+            margin-right: 0.5rem;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        .card {
+            margin-bottom: 20px;
+            background-color: #1a252f;
+            border: 1px solid #2c5364;
+        }
+
+        .card-header {
+            background-color: #2c5364;
+            border-bottom: 1px solid #3a6374;
+        }
+
+        .form-control, .form-select {
+            background-color: #1a252f;
+            border-color: #2c5364;
+            color: white;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background-color: #1a252f;
+            border-color: #00c6ff;
+            color: white;
+            box-shadow: 0 0 0 0.2rem rgba(0, 198, 255, 0.25);
+        }
+
+        .btn-primary {
+            background-color: #00c6ff;
+            border-color: #00c6ff;
+        }
+
+        .btn-primary:hover {
+            background-color: #00a8e6;
+            border-color: #00a8e6;
+        }
+
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1050;
+        }
+
+        .toast {
+            background-color: #1a252f;
+            border: 1px solid #2c5364;
+            color: white;
+        }
+
+        .toast-header {
+            background-color: #2c5364;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- 側邊欄 -->
+            <nav class="col-md-3 col-lg-2 d-md-block sidebar">
+                <div class="sidebar-sticky">
+                    <div class="text-center mb-4">
+                        <img src="../32.png" alt="Logo" width="50" class="rounded-circle mb-2">
+                        <h5>神龍英雄後台</h5>
+                    </div>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="bi bi-speedometer2"></i> 儀表板
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#articles-tab">
+                                <i class="bi bi-journal-text"></i> 文章管理
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#contact-tab">
+                                <i class="bi bi-envelope"></i> 聯絡資訊
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                                <i class="bi bi-gear"></i> 系統設定
+                            </a>
+                        </li>
+                        <li class="nav-item mt-auto">
+                            <a class="nav-link text-danger" href="logout.php">
+                                <i class="bi bi-box-arrow-right"></i> 登出
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- 主要內容區 -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 content">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">管理員設定</h1>
+                </div>
+
+                <div class="row">
+                    <!-- 個人資料設定 -->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">個人資料</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="profileForm">
+                                    <div class="mb-3">
+                                        <label for="adminName" class="form-label">姓名</label>
+                                        <input type="text" class="form-control" id="adminName" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="adminUsername" class="form-label">用戶名</label>
+                                        <input type="text" class="form-control" id="adminUsername" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="adminEmail" class="form-label">電子郵件</label>
+                                        <input type="email" class="form-control" id="adminEmail" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">儲存變更</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 密碼修改 -->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">修改密碼</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="passwordForm">
+                                    <div class="mb-3">
+                                        <label for="currentPassword" class="form-label">当前密碼</label>
+                                        <input type="password" class="form-control" id="currentPassword" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="newPassword" class="form-label">新密碼</label>
+                                        <input type="password" class="form-control" id="newPassword" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="confirmPassword" class="form-label">確認新密碼</label>
+                                        <input type="password" class="form-control" id="confirmPassword" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">修改密碼</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- 提示訊息 -->
+    <div class="toast-container">
+        <div id="successToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                <strong class="me-auto">成功</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                操作已成功完成！
+            </div>
+        </div>
+
+        <div id="errorToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <i class="bi bi-exclamation-triangle-fill text-danger me-2"></i>
+                <strong class="me-auto">錯誤</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                操作失敗，請重試！
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 顯示提示訊息
+        function showToast(type, message) {
+            const toastId = type === 'success' ? 'successToast' : 'errorToast';
+            const toastElement = document.getElementById(toastId);
+            const toastBody = toastElement.querySelector('.toast-body');
+
+            toastBody.textContent = message;
+            const toast = new bootstrap.Toast(toastElement);
+            toast.show();
+        }
+
+        // 頁面載入完成後初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 檢查登入狀態
+            const isLoggedIn = sessionStorage.getItem('admin_logged_in') === 'true';
+            if (!isLoggedIn) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // 載入管理員資料
+            loadAdminProfile();
+        });
+
+        // 載入管理員資料
+        function loadAdminProfile() {
+            fetch('admin_api.php?action=getProfile')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const profile = data.data;
+                        document.getElementById('adminName').value = profile.name;
+                        document.getElementById('adminUsername').value = profile.username;
+                        document.getElementById('adminEmail').value = profile.email;
+                    } else {
+                        showToast('error', '載入個人資料失敗: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showToast('error', '載入個人資料時發生錯誤');
+                });
+        }
+
+        // 儲存個人資料
+        document.getElementById('profileForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('adminName').value;
+            const email = document.getElementById('adminEmail').value;
+
+            fetch('admin_api.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    action: 'updateProfile',
+                    name: name,
+                    email: email
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showToast('success', data.message);
+                } else {
+                    showToast('error', data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showToast('error', '更新個人資料時發生錯誤');
+            });
+        });
+
+        // 修改密碼
+        document.getElementById('passwordForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const currentPassword = document.getElementById('currentPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // 驗證新密碼和確認密碼是否一致
+            if (newPassword !== confirmPassword) {
+                showToast('error', '新密碼和確認密碼不一致！');
+                return;
+            }
+
+            // 驗證新密碼長度
+            if (newPassword.length < 6) {
+                showToast('error', '新密碼長度不能少於6個字符！');
+                return;
+            }
+
+            fetch('admin_api.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    action: 'changePassword',
+                    currentPassword: currentPassword,
+                    newPassword: newPassword
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showToast('success', data.message);
+                    // 清空密碼欄位
+                    document.getElementById('currentPassword').value = '';
+                    document.getElementById('newPassword').value = '';
+                    document.getElementById('confirmPassword').value = '';
+                } else {
+                    showToast('error', data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showToast('error', '修改密碼時發生錯誤');
+            });
+        });
+    </script>
+</body>
+</html>

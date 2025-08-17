@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>後台管理 | 神龍英雄科技部落格</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/x-icon" href="/heroian/src/32.png">
+    <style>
+        .sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            padding: 48px 0 0;
+            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+            background-color: #0f2027;
+            color: white;
+        }
+
+        .sidebar-sticky {
+            position: relative;
+            top: 0;
+            height: calc(100vh - 48px);
+            padding-top: .5rem;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.75);
+            padding: 0.75rem 1rem;
+        }
+
+        .sidebar .nav-link.active {
+            color: #fff;
+            background-color: #2c5364;
+        }
+
+        .sidebar .nav-link i {
+            margin-right: 0.5rem;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        .card {
+            margin-bottom: 20px;
+            background-color: #1a252f;
+            border: 1px solid #2c5364;
+        }
+
+        .card-header {
+            background-color: #2c5364;
+            border-bottom: 1px solid #3a6374;
+        }
+
+        .table {
+            color: white;
+        }
+
+        .table thead th {
+            background-color: #2c5364;
+            border-color: #3a6374;
+        }
+
+        .btn-primary {
+            background-color: #00c6ff;
+            border-color: #00c6ff;
+        }
+
+        .btn-primary:hover {
+            background-color: #00a8e6;
+            border-color: #00a8e6;
+        }
+
+        .form-control, .form-select {
+            background-color: #1a252f;
+            border-color: #2c5364;
+            color: white;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background-color: #1a252f;
+            border-color: #00c6ff;
+            color: white;
+            box-shadow: 0 0 0 0.2rem rgba(0, 198, 255, 0.25);
+        }
+
+        .modal-content {
+            background-color: #1a252f;
+            color: white;
+        }
+
+        .modal-header {
+            background-color: #2c5364;
+            border-bottom: 1px solid #3a6374;
+        }
+
+        .modal-footer {
+            background-color: #2c5364;
+            border-top: 1px solid #3a6374;
+        }
+
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1050;
+        }
+
+        .toast {
+            background-color: #1a252f;
+            border: 1px solid #2c5364;
+            color: white;
+        }
+
+        .toast-header {
+            background-color: #2c5364;
+            color: white;
+        }
+
+        .nav-tabs .nav-link {
+            color: rgba(255, 255, 255, 0.75);
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-tabs .nav-link.active {
+            color: #fff;
+            background-color: transparent;
+            border-bottom-color: #00c6ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- 側邊欄 -->
+            <nav class="col-md-3 col-lg-2 d-md-block sidebar">
+                <div class="sidebar-sticky">
+                    <div class="text-center mb-4">
+                        <img src="../32.png" alt="Logo" width="50" class="rounded-circle mb-2">
+                        <h5>神龍英雄後台</h5>
+                    </div>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" data-bs-toggle="tab" data-bs-target="#dashboard-tab">
+                                <i class="bi bi-speedometer2"></i> 儀表板
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-bs-toggle="tab" data-bs-target="#articles-tab">
+                                <i class="bi bi-journal-text"></i> 文章管理
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-bs-toggle="tab" data-bs-target="#contact-tab">
+                                <i class="bi bi-envelope"></i> 聯絡資訊
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-bs-toggle="tab" data-bs-target="#settings-tab">
+                                <i class="bi bi-gear"></i> 系統設定
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin_settings.html">
+                                <i class="bi bi-person-gear"></i> 管理員設定
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- 主要內容區 -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 content">
+                <div class="tab-content">
+                    <!-- 儀表板 -->
+                    <div class="tab-pane fade show active" id="dashboard-tab">
+                        <h2 class="mt-4">儀表板</h2>
+                        <div class="row mt-4">
+                            <div class="col-md-4 mb-4">
+                                <div class="card text-white">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <h5 class="card-title">總文章數</h5>
+                                                <h3 class="card-text" id="totalArticlesCount">0</h3>
+                                            </div>
+                                            <i class="bi bi-journal-text fs-1 text-primary"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="card text-white">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <h5 class="card-title">新留言</h5>
+                                                <h3 class="card-text" id="newCommentsCount">0</h3>
+                                            </div>
+                                            <i class="bi bi-chat-dots fs-1 text-success"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="card text-white">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <h5 class="card-title">瀏覽量</h5>
+                                                <h3 class="card-text" id="viewCount">0</h3>
+                                            </div>
+                                            <i class="bi bi-eye fs-1 text-warning"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mt-4">
+                            <div class="card-header">
+                                <h5 class="mb-0">最近活動</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="list-group">
+                                    <div class="list-group-item bg-dark text-white border-secondary">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">新文章發布</h6>
+                                            <small>2小時前</small>
+                                        </div>
+                                        <p class="mb-1">《AI 智能應用入門》已成功發布</p>
+                                    </div>
+                                    <div class="list-group-item bg-dark text-white border-secondary">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">新留言</h6>
+                                            <small>5小時前</small>
+                                        </div>
+                                        <p class="mb-1">張三 在《現代前端框架比較》中留言</p>
+                                    </div>
+                                    <div class="list-group-item bg-dark text-white border-secondary">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">系統更新</h6>
+                                            <small>1天前</small>
+                                        </div>
+                                        <p class="mb-1">後台管理系統已更新至最新版本</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 文章管理 -->
+                    <div class="tab-pane fade" id="articles-tab">
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                            <h2 class="h2">文章管理</h2>
+                            <div class="btn-toolbar mb-2 mb-md-0">
+                                <div class="btn-group me-2">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="exportArticles()">
+                                        <i class="bi bi-download"></i> 匯出
+                                    </button>
+                                </div>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addArticleModal">
+                                    <i class="bi bi-plus-circle"></i> 新增文章
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <ul class="nav nav-tabs card-header-tabs" id="articleTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="all-articles-tab" data-bs-toggle="tab" data-bs-target="#all-articles" type="button" role="tab">全部文章</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="published-articles-tab" data-bs-toggle="tab" data-bs-target="#published-articles" type="button" role="tab">已發布</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="draft-articles-tab" data-bs-toggle="tab" data-bs-target="#draft-articles" type="button" role="tab">草稿</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-content" id="articleTabContent">
+                                    <div class="tab-pane fade show active" id="all-articles" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>標題</th>
+                                                        <th>作者</th>
+                                                        <th>分類</th>
+                                                        <th>狀態</th>
+                                                        <th>發布日期</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>AI 智能應用入門</td>
+                                                        <td>神龍英雄</td>
+                                                        <td>人工智能</td>
+                                                        <td><span class="badge bg-success">已發布</span></td>
+                                                        <td>2025-06-15</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-outline-primary me-1" onclick="editArticle(1)">
+                                                                <i class="bi bi-pencil"></i>
+                                                            </button>
+                                                            <button class="btn btn-sm btn-outline-danger" onclick="deleteArticle(1)">
+                                                                <i class="bi bi-trash"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>現代前端框架比較</td>
+                                                        <td>神龍英雄</td>
+                                                        <td>前端開發</td>
+                                                        <td><span class="badge bg-success">已發布</span></td>
+                                                        <td>2025-06-10</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-outline-primary me-1" onclick="editArticle(2)">
+                                                                <i class="bi bi-pencil"></i>
+                                                            </button>
+                                                            <button class="btn btn-sm btn-outline-danger" onclick="deleteArticle(2)">
+                                                                <i class="bi bi-trash"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>雲端原生應用開發指南</td>
+                                                        <td>神龍英雄</td>
+                                                        <td>雲端技術</td>
+                                                        <td><span class="badge bg-warning">草稿</span></td>
+                                                        <td>-</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-outline-primary me-1" onclick="editArticle(3)">
+                                                                <i class="bi bi-pencil"></i>
+                                                            </button>
+                                                            <button class="btn btn-sm btn-outline-danger" onclick="deleteArticle(3)">
+                                                                <i class="bi bi-trash"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="published-articles" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>標題</th>
+                                                        <th>作者</th>
+                                                        <th>分類</th>
+                                                        <th>發布日期</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>AI 智能應用入門</td>
+                                                        <td>神龍英雄</td>
+                                                        <td>人工智能</td>
+                                                        <td>2025-06-15</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-outline-primary me-1" onclick="editArticle(1)">
+                                                                <i class="bi bi-pencil"></i>
+                                                            </button>
+                                                            <button class="btn btn-sm btn-outline-danger" onclick="deleteArticle(1)">
+                                                                <i class="bi bi-trash"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>現代前端框架比較</td>
+                                                        <td>神龍英雄</td>
+                                                        <td>前端開發</td>
+                                                        <td>2025-06-10</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-outline-primary me-1" onclick="editArticle(2)">
+                                                                <i class="bi bi-pencil"></i>
+                                                            </button>
+                                                            <button class="btn btn-sm btn-outline-danger" onclick="deleteArticle(2)">
+                                                                <i class="bi bi-trash"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="draft-articles" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>標題</th>
+                                                        <th>作者</th>
+                                                        <th>分類</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>雲端原生應用開發指南</td>
+                                                        <td>神龍英雄</td>
+                                                        <td>雲端技術</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-outline-primary me-1" onclick="editArticle(3)">
+                                                                <i class="bi bi-pencil"></i>
+                                                            </button>
+                                                            <button class="btn btn-sm btn-outline-danger" onclick="deleteArticle(3)">
+                                                                <i class="bi bi-trash"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 聯絡資訊 -->
+                    <div class="tab-pane fade" id="contact-tab">
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                            <h2 class="h2">聯絡資訊管理</h2>
+                            <div class="btn-toolbar mb-2 mb-md-0">
+                                <div class="btn-group me-2">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="exportContacts()">
+                                        <i class="bi bi-download"></i> 匯出
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <ul class="nav nav-tabs card-header-tabs" id="contactTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="all-contacts-tab" data-bs-toggle="tab" data-bs-target="#all-contacts" type="button" role="tab">全部留言</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="unread-contacts-tab" data-bs-toggle="tab" data-bs-target="#unread-contacts" type="button" role="tab">未讀取</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="read-contacts-tab" data-bs-toggle="tab" data-bs-target="#read-contacts" type="button" role="tab">已讀取</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-content" id="contactTabContent">
+                                    <div class="tab-pane fade show active" id="all-contacts" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>姓名</th>
+                                                        <th>電子郵件</th>
+                                                        <th>主題</th>
+                                                        <th>日期</th>
+                                                        <th>狀態</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>張三</td>
+                                                        <td>zhangsan@example.com</td>
+                                                        <td>關於文章的問題</td>
+                                                        <td>2025-06-18</td>
+                                                        <td><span class="badge bg-warning">未讀取</span></td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-outline-primary me-1" onclick="viewContact(1)">
+                                                                <i class="bi bi-eye"></i>
+                                                            </button>
+                                                            <button class="btn btn-sm btn-outline-success" onclick="markAsRead(1)">
+                                                                <i class="bi bi-check-circle"></i>
+                                                            </button>
+                                                            <button class="btn btn-sm btn-outline-danger" onclick="deleteContact(1)">
+                                                                <i class="bi bi-trash"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>李四</td>
+                                                        <td>lisi@example.com</td>
+                                                        <td>網站合作提案</td>
+                                                        <td>2025-06-17</td>
+                                                        <td><span class="badge bg-success">已讀取</span></td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-outline-primary me-1" onclick="viewContact(2)">
+                                                                <i class="bi bi-eye"></i>
+                                                            </button>
+                                                            <button class="btn btn-sm btn-outline-success" onclick="markAsRead(2)">
+                                                                <i class="bi bi-check-circle"></i>
+                                                            </button>
+                                                            <button class="btn btn-sm btn-outline-danger" onclick="deleteContact(2)">
+                                                                <i class="bi bi-trash"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>王五</td>
+                                                        <td>wangwu@example.com</td>
+                                                        <td>技術諮詢</td>
+                                                        <td>2025-06-16</td>
+                                                        <td><span class="badge bg-success">已讀取</span></td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-outline-primary me-1" onclick="viewContact(3)">
+                                                                <i class="bi bi-eye"></i>
+                                                            </button>
+                                                            <button class="btn btn-sm btn-outline-success" onclick="markAsRead(3)">
+                                                                <i class="bi bi-check-circle"></i>
+                                                            </button>
+                                                            <button class="btn btn-sm btn-outline-danger" onclick="deleteContact(3)">
+                                                                <i class="bi bi-trash"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="unread-contacts" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>姓名</th>
+                                                        <th>電子郵件</th>
+                                                        <th>主題</th>
+                                                        <th>日期</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>張三</td>
+                                                        <td>zhangsan@example.com</td>
+                                                        <td>關於文章的問題</td>
+                                                        <td>2025-06-18</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-outline-primary me-1" onclick="viewContact(1)">
+                                                                <i class="bi bi-eye"></i>
+                                                            </button>
+                                                            <button class="btn btn-sm btn-outline-success" onclick="markAsRead(1)">
+                                                                <i class="bi bi-check-circle"></i>
+                                                            </button>
+                                                            <button class="btn btn-sm btn-outline-danger" onclick="deleteContact(1)">
+                                                                <i class="bi bi-trash"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="read-contacts" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>姓名</th>
+                                                        <th>電子郵件</th>
+                                                        <th>主題</th>
+                                                        <th>日期</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>李四</td>
+                                                        <td>lisi@example.com</td>
+                                                        <td>網站合作提案</td>
+                                                        <td>2025-06-17</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-outline-primary me-1" onclick="viewContact(2)">
+                                                                <i class="bi bi-eye"></i>
+                                                            </button>
+                                                            <button class="btn btn-sm btn-outline-success" onclick="markAsRead(2)">
+                                                                <i class="bi bi-check-circle"></i>
+                                                            </button>
+                                                            <button class="btn btn-sm btn-outline-danger" onclick="deleteContact(2)">
+                                                                <i class="bi bi-trash"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>王五</td>
+                                                        <td>wangwu@example.com</td>
+                                                        <td>技術諮詢</td>
+                                                        <td>2025-06-16</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-outline-primary me-1" onclick="viewContact(3)">
+                                                                <i class="bi bi-eye"></i>
+                                                            </button>
+                                                            <button class="btn btn-sm btn-outline-success" onclick="markAsRead(3)">
+                                                                <i class="bi bi-check-circle"></i>
+                                                            </button>
+                                                            <button class="btn btn-sm btn-outline-danger" onclick="deleteContact(3)">
+                                                                <i class="bi bi-trash"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 系統設定 -->
+                    <div class="tab-pane fade" id="settings-tab">
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                            <h2 class="h2">系統設定</h2>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">網站基本設定</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form id="siteSettingsForm">
+                                            <div class="mb-3">
+                                                <label for="siteTitle" class="form-label">網站標題</label>
+                                                <input type="text" class="form-control" id="siteTitle" value="神龍英雄科技部落格">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="siteDescription" class="form-label">網站描述</label>
+                                                <textarea class="form-control" id="siteDescription" rows="3">分享前端開發、人工智能、軟體工程等技術文章，提供實用教程與行業洞察。</textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="siteKeywords" class="form-label">網站關鍵字</label>
+                                                <input type="text" class="form-control" id="siteKeywords" value="神龍英雄,科技部落格,前端開發,軟體工程,人工智能">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary" id="saveSiteSettings">儲存設定</button>
+                                            <input type="hidden" name="form-action" value="saveSiteSettings">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">管理員帳號</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form id="adminSettingsForm">
+                                            <div class="mb-3">
+                                                <label for="adminName" class="form-label">管理員名稱</label>
+                                                <input type="text" class="form-control" id="adminName" value="神龍英雄">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="adminEmail" class="form-label">管理員 Email</label>
+                                                <input type="email" class="form-control" id="adminEmail" value="admin@yourwebsite.com">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="adminPassword" class="form-label">修改密碼</label>
+                                                <input type="password" class="form-control" id="adminPassword">
+                                                <div class="form-text">留空表示不修改密碼</div>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary" id="saveAdminSettings">更新帳號</button>
+                                            <input type="hidden" name="form-action" value="saveAdminSettings">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mt-4">
+                            <div class="card-header">
+                                <h5 class="mb-0">資料管理</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card bg-dark text-white">
+                                            <div class="card-body text-center">
+                                                <i class="bi bi-database fs-1 text-primary"></i>
+                                                <h5 class="card-title mt-2">備份資料庫</h5>
+                                                <p class="card-text">匯出所有文章和聯絡資料</p>
+                                                <button class="btn btn-primary" onclick="backupDatabase()">備份資料</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card bg-dark text-white">
+                                            <div class="card-body text-center">
+                                                <i class="bi bi-arrow-up-circle fs-1 text-success"></i>
+                                                <h5 class="card-title mt-2">上傳檔案</h5>
+                                                <p class="card-text">上傳圖片或其他檔案</p>
+                                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uploadModal">上傳檔案</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card bg-dark text-white">
+                                            <div class="card-body text-center">
+                                                <i class="bi bi-shield-check fs-1 text-warning"></i>
+                                                <h5 class="card-title mt-2">系統狀態</h5>
+                                                <p class="card-text">查看系統運作狀態</p>
+                                                <button class="btn btn-primary" onclick="checkSystemStatus()">檢查狀態</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- 新增/編輯文章模態框 -->
+    <div class="modal fade" id="addArticleModal" tabindex="-1" aria-labelledby="addArticleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addArticleModalLabel">新增文章</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="articleForm">
+                        <div class="mb-3">
+                            <label for="articleTitle" class="form-label">文章標題</label>
+                            <input type="text" class="form-control" id="articleTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="articleCategory" class="form-label">文章分類</label>
+                            <select class="form-select" id="articleCategory" required>
+                                <option value="">請選擇分類</option>
+                                <option value="前端開發">前端開發</option>
+                                <option value="後端開發">後端開發</option>
+                                <option value="人工智能">人工智能</option>
+                                <option value="軟體工程">軟體工程</option>
+                                <option value="雲端技術">雲端技術</option>
+                                <option value="其他">其他</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="articleSummary" class="form-label">文章摘要</label>
+                            <textarea class="form-control" id="articleSummary" rows="2"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="articleContent" class="form-label">文章內容</label>
+                            <textarea class="form-control" id="articleContent" rows="15" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="articlePublished">
+                                <label class="form-check-label" for="articlePublished">
+                                    立即發布
+                                </label>
+                            </div>
+                        </div>
+                        <input type="hidden" name="form-action" value="saveArticle">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="saveArticle()">儲存文章</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 檢視聯絡資訊模態框 -->
+    <div class="modal fade" id="viewContactModal" tabindex="-1" aria-labelledby="viewContactModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewContactModalLabel">聯絡資訊</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="contactForm">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="contactName" class="form-label">姓名</label>
+                                <input type="text" class="form-control" id="contactName">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="contactEmail" class="form-label">電子郵件</label>
+                                <input type="email" class="form-control" id="contactEmail"
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactSubject" class="form-label">主題</label>
+                            <input type="text" class="form-control" id="contactSubject"
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactDate" class="form-label">日期</label>
+                            <input type="text" class="form-control" id="contactDate" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactMessage" class="form-label">訊息內容</label>
+                            <textarea class="form-control" id="contactMessage" rows="5"></textarea>
+                        </div>
+                        <input type="hidden" name="form-action" value="saveContact">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                    <button type="button" class="btn btn-primary" onclick="saveContact()">儲存修改</button>
+                    <button type="button" class="btn btn-success" onclick="replyContact()">回覆</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 回覆聯絡資訊模態框 -->
+    <div class="modal fade" id="replyContactModal" tabindex="-1" aria-labelledby="replyContactModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="replyContactModalLabel">回覆聯絡資訊</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="replyContactForm">
+                        <div class="mb-3">
+                            <label for="replyToEmail" class="form-label">回覆至</label>
+                            <input type="email" class="form-control" id="replyToEmail" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="replySubject" class="form-label">主題</label>
+                            <input type="text" class="form-control" id="replySubject" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="replyContent" class="form-label">回覆內容</label>
+                            <textarea class="form-control" id="replyContent" rows="10" required></textarea>
+                        </div>
+                        <input type="hidden" name="form-action" value="replyContact">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="sendReply()">發送回覆</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 上傳檔案模態框 -->
+    <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="uploadModalLabel">上傳檔案</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="uploadForm">
+                        <div class="mb-3">
+                            <label for="uploadFile" class="form-label">選擇檔案</label>
+                            <input type="file" class="form-control" id="uploadFile" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="uploadDescription" class="form-label">檔案描述</label>
+                            <textarea class="form-control" id="uploadDescription" rows="2"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="uploadFile()">上傳</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 提示訊息 -->
+    <div class="toast-container">
+        <div id="successToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                <strong class="me-auto">成功</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                操作已成功完成！
+            </div>
+        </div>
+
+        <div id="errorToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <i class="bi bi-exclamation-triangle-fill text-danger me-2"></i>
+                <strong class="me-auto">錯誤</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                操作失敗，請重試！
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/functions.js"></script>
+    <script>
+        // 檢查是否已登入
+        document.addEventListener('DOMContentLoaded', function() {
+            // 檢查登入狀態
+            const isLoggedIn = sessionStorage.getItem('admin_logged_in') === 'true';
+            const rememberToken = getCookie('admin_remember');
+
+            if (!isLoggedIn && !rememberToken) {
+                // 未登入，跳轉到登入頁面
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // 如果有記住登入信息，嘗試自動登入
+            if (rememberToken && !isLoggedIn) {
+                // 發送自動登請求
+                fetch('auth.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({
+                        'token': rememberToken  // 使用令牌進行自動登入
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // 自動登入成功
+                        sessionStorage.setItem('admin_logged_in', 'true');
+                        // 初始化頁面
+                        initializePage();
+                    } else {
+                        // 自動登入失敗，清除cookie並跳轉到登入頁面
+                        document.cookie = 'admin_remember=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                        window.location.href = 'login.html';
+                    }
+                })
+                .catch(error => {
+                    console.error('Auto login error:', error);
+                    window.location.href = 'login.html';
+                });
+            } else {
+                // 已登入，初始化頁面
+                initializePage();
+            }
+
+            // 獲取Cookie的輔助函數
+            function getCookie(name) {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+            }
+
+            // 初始化頁面函數
+            function initializePage() {
+                // 加載儀表板數據
+                loadDashboardData();
+
+                // 加載系統設定
+                loadSettings();
+            }
+        });
+        // 顯示提示訊息
+        function showToast(type, message) {
+            const toastId = type === 'success' ? 'successToast' : 'errorToast';
+            const toastElement = document.getElementById(toastId);
+            const toastBody = toastElement.querySelector('.toast-body');
+
+            toastBody.textContent = message;
+            const toast = new bootstrap.Toast(toastElement);
+            toast.show();
+        }
+
+        // 新增文章
+        function saveArticle() {
+            // 這裡是模擬的儲存文章功能
+            const title = document.getElementById('articleTitle').value;
+            const category = document.getElementById('articleCategory').value;
+            const summary = document.getElementById('articleSummary').value;
+            const content = document.getElementById('articleContent').value;
+            const published = document.getElementById('articlePublished').checked;
+
+            if (!title || !category || !content) {
+                showToast('error', '請填寫必要欄位！');
+                return;
+            }
+
+            // 模擬儲存成功
+            showToast('success', '文章已成功儲存！');
+
+            // 關閉模態框
+            const modal = bootstrap.Modal.getInstance(document.getElementById('addArticleModal'));
+            modal.hide();
+
+            // 重置表單
+            document.getElementById('articleForm').reset();
+        }
+
+        // 編輯文章
+        function editArticle(id) {
+            // 這裡是模擬的編輯文章功能
+            const modal = new bootstrap.Modal(document.getElementById('addArticleModal'));
+            document.getElementById('addArticleModalLabel').textContent = '編輯文章';
+
+            // 模擬載入文章資料
+            document.getElementById('articleTitle').value = '範例文章標題';
+            document.getElementById('articleCategory').value = '前端開發';
+            document.getElementById('articleSummary').value = '這是一個範例文章摘要';
+            document.getElementById('articleContent').value = '這是範例文章內容...';
+            document.getElementById('articlePublished').checked = true;
+
+            modal.show();
+        }
+
+        // 刪除文章
+        function deleteArticle(id) {
+            if (confirm('確定要刪除這篇文章嗎？此操作無法復原。')) {
+                // 這裡是模擬的刪除文章功能
+                showToast('success', '文章已成功刪除！');
+            }
+        }
+
+        // 檢視聯絡資訊
+        function viewContact(id) {
+            // 這裡是模擬的檢視聯絡資訊功能
+            const modal = new bootstrap.Modal(document.getElementById('viewContactModal'));
+
+            // 模擬載入聯絡資料
+            document.getElementById('contactName').value = '張三';
+            document.getElementById('contactEmail').value = 'zhangsan@example.com';
+            document.getElementById('contactSubject').value = '關於文章的問題';
+            document.getElementById('contactDate').value = '2025-06-18';
+            document.getElementById('contactMessage').value = '您好，我有關於《AI 智能應用入門》這篇文章的一些問題想請教...';
+
+            modal.show();
+        }
+
+        // 標記為已讀取
+        function markAsRead(id) {
+            // 這裡是模擬的標記已讀取功能
+            showToast('success', '已標記為已讀取！');
+        }
+
+        // 刪除聯絡資訊
+        function deleteContact(id) {
+            if (confirm('確定要刪除這則聯絡資訊嗎？此操作無法復原。')) {
+                // 這裡是模擬的刪除聯絡資訊功能
+                showToast('success', '聯絡資訊已成功刪除！');
+            }
+        }
+
+        // 回覆聯絡資訊
+        function replyContact() {
+            // 這裡是模擬的回覆功能
+            showToast('success', '回覆功能已觸發！');
+
+            // 關閉模態框
+            const modal = bootstrap.Modal.getInstance(document.getElementById('viewContactModal'));
+            modal.hide();
+        }
+
+        // 匯出文章
+        function exportArticles() {
+            // 這裡是模擬的匯出文章功能
+            showToast('success', '文章列表已匯出！');
+        }
+
+        // 匯出聯絡資訊
+        function exportContacts() {
+            // 這裡是模擬的匯出聯絡資訊功能
+            showToast('success', '聯絡資訊已匯出！');
+        }
+
+        // 備份資料庫
+        function backupDatabase() {
+            // 這裡是模擬的備份資料庫功能
+            showToast('success', '資料庫備份已開始，完成後將會通知您！');
+        }
+
+        // 上傳檔案
+        function uploadFile() {
+            // 這裡是模擬的上傳檔案功能
+            const fileInput = document.getElementById('uploadFile');
+            if (!fileInput.files.length) {
+                showToast('error', '請選擇要上傳的檔案！');
+                return;
+            }
+
+            showToast('success', '檔案上傳成功！');
+
+            // 關閉模態框
+            const modal = bootstrap.Modal.getInstance(document.getElementById('uploadModal'));
+            modal.hide();
+
+            // 重置表單
+            document.getElementById('uploadForm').reset();
+        }
+
+        // 檢查系統狀態
+        function checkSystemStatus() {
+            // 這裡是模擬的檢查系統狀態功能
+            showToast('success', '系統運作正常，所有服務都在線！');
+        }
+
+        // 頁面載入完成後初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化所有工具提示
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            });
+        });
+    </script>
+</body>
+</html>

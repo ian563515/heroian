@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>量子計算概覽 | 神龍英雄科技部落格</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="icon" type="image/x-icon" href="32.png">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+</head>
+<body>
+    <!-- 粒子背景 -->
+    <div id="particles-js" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;"></div>
+    <div class="container position-relative">
+        <!-- 導覽列 -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded mt-4 mb-5 px-3">
+            <a class="navbar-brand fw-bold" href="index.html" style="font-family:'Orbitron',sans-serif;">神龍英雄部落格</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">首頁</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">關於我</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="articles.html">文章</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faqAccordion">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contactForm">聯絡</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <article class="mt-5">
+            <h1 class="fw-bold mb-4" style="font-family:'Orbitron',sans-serif; color:#00c6ff;">量子計算概覽</h1>
+            <div class="mb-3 text-secondary">
+                <i class="bi bi-person"></i> 科學家
+                <i class="bi bi-calendar"></i> 2025/08/05
+            </div>
+            <hr class="hr-tech">
+
+            <section class="mb-5">
+                <h2 class="h3 mb-4">什麼是量子計算？</h2>
+                <p>量子計算是一種基於量子力學原理進行信息處理的計算模式，它利用量子比特（qubit）的疊加態和量子糾纏等特性，在某些特定問題上具有潛在的計算優勢。</p>
+
+                <div class="card bg-dark text-white mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-cpu"></i> 量子比特 vs. 比特</h5>
+                        <p>傳統計算機使用比特（bit）作為基本信息單元，每個比特只能是 0 或 1 中的某一個狀態。而量子計算機使用量子比特，具有以下特點：</p>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <h6>傳統比特：</h6>
+                                <ul>
+                                    <li>狀態：確定性，只能是 0 或 1</li>
+                                    <li>表示：用電壓高低、磁場方向等物理量表示</li>
+                                    <li>操作：邏輯門（AND、OR、NOT 等）</li>
+                                    <li>信息容量：N 個比特表示 N 個可能狀態中的一個</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>量子比特：</h6>
+                                <ul>
+                                    <li>狀態：疊加態，同時是 0 和 1 的疊加</li>
+                                    <li>表示：用量子態的波函數描述</li>
+                                    <li>操作：量子門（Hadamard、CNOT、Toffoli 等）</li>
+                                    <li>信息容量：N 個量子比特可以表示 2^N 個狀態的疊加</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-info">
+                    <h5 class="alert-heading"><i class="bi bi-lightbulb"></i> 量子力學的基本原理</h5>
+                    <p class="mb-0">量子計算的威力來源於量子力學的幾個基本原理：</p>
+                    <ul class="mt-2">
+                        <li><strong>疊加原理</strong>：量子系統可以同時處於多個狀態的疊加，直到被觀測</li>
+                        <li><strong>量子糾纏</strong>：兩個或多個量子比特可以關聯在一起，無論距離多遠</li>
+                        <li><strong>量子干涉</strong>：量子波可以相互干涉，增強或抵消某些計算路徑</li>
+                        <li><strong>測量坍縮</strong>：對量子系統進行測量會使其波函數坍縮到某個確定狀態</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h3 mb-4">量子計算的硬體實現</h2>
+                <div class="card bg-dark text-white mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-motherboard"></i> 量子計算機的類型</h5>
+                        <p>根據量子比特的物理實現方式，量子計算機可以分為以下幾種類型：</p>
+
+                        <div class="accordion mt-3" id="quantumHardwareAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#superconducting">
+                                        超導量子計算機
+                                    </button>
+                                </h2>
+                                <div id="superconducting" class="accordion-collapse collapse" data-bs-parent="#quantumHardwareAccordion">
+                                    <div class="accordion-body">
+                                        <p>使用超導約瑟夫森結構作為量子比特，是目前最成熟的量子計算機技術之一。</p>
+                                        <ul>
+                                            <li><strong>優勢</strong>：相較較長的相干時間、可擴展性好、門操作速度快</li>
+                                            <li><strong>挑戰</strong>：需要極低溫度（約 20 毫開爾文）、製造工藝複雜</li>
+                                            <li><strong>代表公司</strong>：Google、IBM、Rigetti、D-Wave</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#trappedIon">
+                                        离子阱量子計算機
+                                    </button>
+                                </h2>
+                                <div id="trappedIon" class="accordion-collapse collapse" data-bs-parent="#quantumHardwareAccordion">
+                                    <div class="accordion-body">
+                                        <p>使用電磁場捕獲離子，利用離子的能級作為量子比特。</p>
+                                        <ul>
+                                            <li><strong>優勢</strong>：量子比特相干時間長、門操作保真度高、全連接架構</li>
+                                            <li><strong>挑戰</strong>：擴展性受限、門操作速度相對較慢</li>
+                                            <li><strong>代表公司</strong>：IonQ、Honeywell、Quantinuum</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#photonic">
+                                        光量子計算機
+                                    </button>
+                                </h2>
+                                <div id="photonic" class="accordion-collapse collapse" data-bs-parent="#quantumHardwareAccordion">
+                                    <div class="accordion-body">
+                                        <p>使用光子作為量子比特，利用光子的偏振、路徑或時間等自由度編碼信息。</p>
+                                        <ul>
+                                            <li><strong>優勢</strong>：操作溫度要求低、可在室溫下運行、天然適合光纖通信</li>
+                                            <li><strong>挑戰</strong>：光子產生和檢測效率低、難以實現兩光子門操作</li>
+                                            <li><strong>代表公司</strong>：PsiQuantum、Xanadu、Quantum Source</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#semiconductor">
+                                        半導體量子點計算機
+                                    </button>
+                                </h2>
+                                <div id="semiconductor" class="accordion-collapse collapse" data-bs-parent="#quantumHardwareAccordion">
+                                    <div class="accordion-body">
+                                        <p>利用半導體材料中的電子自旋作為量子比特，類似於傳統計算機的製造工藝。</p>
+                                        <ul>
+                                            <li><strong>優勢</strong>：與現有半導體製造技術兼容、潛在的高擴展性</li>
+                                            <li><strong>挑戰</strong>：自旋相干時間短、製造一致性難保證</li>
+                                            <li><strong>代表公司</strong>：Intel、QuTech、Quantum Brilliance</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h3 mb-4">量子算法與應用</h2>
+                <div class="card bg-dark text-white mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-code-slash"></i> 關鍵量子算法</h5>
+                        <p>量子計算的優勢體現在特定的量子算法上，這些算法利用量子疊加和干涉等特性，在特定問題上比經典算法有指數級的速度提升：</p>
+
+                        <div class="row mt-3">
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100 border-primary">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-primary">Shor 算法</h5>
+                                        <p class="card-text">用於大數分解的量子算法，對現有的 RSA 加密構成潛在威脅。</p>
+                                        <ul>
+                                            <li><strong>複雜度</strong>：O((log N)^3)，相比經典算法的指數複雜度有巨大優勢</li>
+                                            <li><strong>應用</strong>：破解 RSA、DSA 等基於大數分解困難性的加密系統</li>
+                                            <li><strong>現狀</strong>：理論上已證明，但需要大量容錯量子比特才能實用</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100 border-warning">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-warning">Grover 算法</h5>
+                                        <p class="card-text">用於無序數據庫搜索的量子算法，提供二次加速。</p>
+                                        <ul>
+                                            <li><strong>複雜度</strong>：O(√N)，相比經典算法的 O(N) 有二次加速</li>
+                                            <li><strong>應用</strong>：優化問題、密碼分析、機器學習</li>
+                                            <li><strong>現狀</strong>：已在小規模量子計算機上實驗驗證</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100 border-success">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-success">量子模擬算法</h5>
+                                        <p class="card-text">用於模擬量子系統的行為，是量子計算最有潛力的應用之一。</p>
+                                        <ul>
+                                            <li><strong>複雜度</strong>：相比經典指數複雜度，量子算法提供指數級加速</li>
+                                            <li><strong>應用</strong>：材料科學、藥物發現、化學反應模擬</li>
+                                            <li><strong>現狀</strong>：已在小分子模擬方面取得進展</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100 border-info">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-info">量子機器學習</h5>
+                                        <p class="card-text">結合量子計算與機器學習，處理高維數據和複雜模式識別。</p>
+                                        <ul>
+                                            <li><strong>優勢</strong>：處理高維數據、加速特定矩陣運算</li>
+                                            <li><strong>應用</strong>：分類、回歸、生成模型、優化問題</li>
+                                            <li><strong>現狀</strong>：處於早期研究階段，潛力巨大</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h3 mb-4">量子計算的發展現狀</h2>
+                <div class="card bg-dark text-white mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-graph-up"></i> 量子計算發展階段</h5>
+                        <p>量子計算的發展可以分為以下幾個階段，目前行業大多數認為我們仍處於 NISQ（含噪的中等規模量子）時代：</p>
+
+                        <div class="progress-steps mt-3">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h6>早期研究階段</h6>
+                                    <p>1994-2015：理論基礎建立，小規模實驗驗證</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h6>NISQ 時代</h6>
+                                    <p>2016-現在：含噪的中等規模量子計算（50-1000 個量子比特）</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h6>容錯量子計算</h6>
+                                    <p>預計 2030 年代：實現量子錯誤校正，擁有穩定的邏輯量子比特</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h6>大規模量子計算</h6>
+                                    <p>預計 2040 年代：擁有數百萬個量子比特的通用量子計算機</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary"><i class="bi bi-building"></i> 量子計算產生態系</h5>
+                                <p class="card-text">量子計算產業生態系正在快速發展，主要參與者包括：</p>
+                                <ul>
+                                    <li><strong>科技巨頭</strong>：Google、IBM、Microsoft、Intel 等投入大量資源研發</li>
+                                    <li><strong>專業量子計算公司</strong>：D-Wave、Rigetti、IonQ、PsiQuantum 等</li>
+                                    <li><strong>創業公司</strong>：在各個技術路線上進行創新突破</li>
+                                    <li><strong>政府與研究機構</strong>：各國政府投資量子計算研究與發展</li>
+                                    <li><strong>雲端服務提供商</strong>：Amazon Braket、Microsoft Azure Quantum、IBM Quantum Experience</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 border-warning">
+                            <div class="card-body">
+                                <h5 class="card-title text-warning"><i class="bi bi-trophy"></i> 重大里程碑</h5>
+                                <p class="card-text">量子計算領域已經實現了多個重要里程碑：</p>
+                                <ul>
+                                    <li><strong>2019 年</strong>：Google 宣稱實現"量子霸權"，53 個量子比特的處理器完成傳統超級計算機需要數千年的計算</li>
+                                    <li><strong>2020 年</strong>：中國科學家實現 76 個光子的量子計算機"九章"</li>
+                                    <li><strong>2021 年</strong>：IBM 宣布開發 127 個量子比特的處理器 Eagle</li>
+                                    <li><strong>2022 年</strong>：中國科學家實現 66 個比特的超導量子計算器"祖衝之二號"</li>
+                                    <li><strong>2023 年</strong>：IBM 發布 433 個量子比特的處理器 Osprey，並宣布計劃 2025 年達到 4000 量子比特</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h3 mb-4">未來展望與挑戰</h2>
+                <div class="card bg-dark text-white mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-clock-history"></i> 時間表預測</h5>
+                        <p>專家預測，在接下來的 5-10 年內，我們將看到專用量子計算機在特定領域的實際應用，而通用量子計算機可能需要更長時間才能成熟。</p>
+
+                        <div class="timeline mt-4">
+                            <div class="timeline-item">
+                                <div class="timeline-badge bg-primary">
+                                    <i class="bi bi-calendar-range"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <h5>近期（1-3 年）</h5>
+                                    <p>量子優勢在特定問題上得到證實，量子模擬在材料科學和藥物發現領域開始產生實際價值，量子機器學習算法得到改進。</p>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="timeline-badge bg-warning">
+                                    <i class="bi bi-calendar3"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <h5>中期（3-7 年）</h5>
+                                    <p>實現初步的量子錯誤校正，擁有穩定的邏輯量子比特，量子計算在金融模擬、優化問題和密碼分析方面展現優勢。</p>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="timeline-badge bg-success">
+                                    <i class="bi bi-calendar2-heart"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <h5>遠期（7-15 年）</h5>
+                                    <p>通用容錯量子計算機問世，對現有加密系統構成威脅，催生後量子密碼學，量子計算成為解決複雜問題的標準工具。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-warning">
+                    <h5 class="alert-heading"><i class="bi bi-exclamation-triangle"></i> 技術挑戰</h5>
+                    <p class="mb-0">儘管進展迅速，量子計算仍面臨多項技術挑戰：</p>
+                    <ul class="mt-2">
+                        <li><strong>量子比特的相干時間</strong>：量子比特容易受到環境干擾，保持量子狀態的時間有限</li>
+                        <li><strong>量子錯誤校正</strong>：需要大量物理量子比特才能構建一個邏輯量子比特</li>
+                        <li><strong>擴展性問題</strong>：增加量子比特數量同時保持相干性和連接性極具挑戰</li>
+                        <li><strong>量子-經典接口</strong>：量子計算機與經典計算機的高效接口技術</li>
+                        <li><strong>軟件開發工具鏈</strong>：量子編程語言、編譯器和調試工具仍處於早期階段</li>
+                    </ul>
+                </div>
+            </section>
+
+            <div class="alert alert-info mt-5">
+                <i class="bi bi-info-circle"></i> <strong>結語：</strong>量子計算代表了一場信息處理的革命，它不僅僅是更快的計算機，而是一種全新的計算范式。儘管仍處於早期階段，但其潛在影響巨大，將深刻影響我們的科技和社會。作為科技從業者，我們應關注量子計算的發展，並思考如何利用這一技術創造價值。
+            </div>
+        </article>
+
+        <!-- 留言區 -->
+        <div class="card mt-5 p-4 shadow">
+            <h4 class="mb-3" style="font-family:'Orbitron',sans-serif; color:#00c6ff;">留言區</h4>
+            <form id="commentForm" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="commentName" class="form-label">暱稱</label>
+                    <input type="text" class="form-control" id="commentName" required>
+                    <div class="invalid-feedback">請輸入暱稱。</div>
+                </div>
+                <div class="mb-3">
+                    <label for="commentContent" class="form-label">留言內容</label>
+                    <textarea class="form-control" id="commentContent" rows="3" required></textarea>
+                    <div class="invalid-feedback">請輸入留言。</div>
+                </div>
+                <button type="submit" class="btn btn-neon w-100">送出留言</button>
+            </form>
+            <div id="commentList" class="mt-4"></div>
+        </div>
+
+        <a href="articles.html" class="btn btn-neon mt-4">返回文章列表</a>
+    </div>
+
+    <!-- 頁尾 -->
+    <footer class="footer mt-5 text-center py-3">
+        © 2025 神龍英雄科技部落格 | 由 神龍小英雄 製作
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main_fixed.js"></script>
+    <script>
+        // 初始化粒子背景
+        particlesJS('particles-js', {
+          "particles": {
+            "number": { "value": 80 },
+            "color": { "value": "#00c6ff" },
+            "shape": { "type": "circle" },
+            "opacity": { "value": 0.6 },
+            "size": { "value": 3 },
+            "line_linked": {
+              "enable": true,
+              "distance": 130,
+              "color": "#00c6ff",
+              "opacity": 0.5,
+              "width": 1.2
+            },
+            "move": { "enable": true, "speed": 2.5 }
+          },
+          "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+              "onhover": { "enable": true, "mode": "grab" },
+              "onclick": { "enable": true, "mode": "push" }
+            },
+            "modes": {
+              "grab": { "distance": 150, "line_linked": { "opacity": 0.8 } },
+              "push": { "particles_nb": 4 }
+            }
+          },
+          "retina_detect": true
+        });
+
+        // 留言區互動
+        const commentForm = document.getElementById('commentForm');
+        const commentList = document.getElementById('commentList');
+        if (commentForm) {
+            commentForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+                if (commentForm.checkValidity()) {
+                    const name = document.getElementById('commentName').value || '匿名';
+                    const content = document.getElementById('commentContent').value;
+                    const commentItem = document.createElement('div');
+                    commentItem.className = 'border-bottom py-2';
+                    commentItem.innerHTML = `<strong style="color:#00c6ff;">${name}</strong>：${content}`;
+                    commentList.prepend(commentItem);
+                    commentForm.reset();
+                    commentForm.classList.remove('was-validated');
+                } else {
+                    commentForm.classList.add('was-validated');
+                }
+            });
+        }
+    </script>
+</div>
+</body>
+</html>

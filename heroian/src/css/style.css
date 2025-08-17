@@ -1,0 +1,807 @@
+/* 淺色主題（預設） - 已停用 */
+/* body {
+    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+    color: #232526;
+}
+.card {
+    background: #fff;
+    color: #232526;
+}
+.btn-custom {
+    background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+    color: #fff;
+}
+.footer {
+    background: #f8f9fa;
+    color: #232526;
+} */
+
+/* 深色主題 - 已停用 */
+/* body.bg-dark {
+    background: linear-gradient(135deg, #232526 0%, #414345 100%);
+    color: #f8f9fa;
+}
+body.bg-dark .card {
+    background: rgba(30,32,34,0.95);
+    color: #f8f9fa;
+}
+body.bg-dark .btn-custom {
+    background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+    color: #fff;
+    text-shadow: 0 0 8px #00c6ff;
+}
+body.bg-dark .footer {
+    background: #343a40;
+    color: #f8f9fa;
+} */
+
+body {
+    background: #0a0e27;
+    background-image: 
+        radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.15) 1px, transparent 0);
+    background-size: 40px 40px;
+    color: #e0eafc;
+    font-family: 'Orbitron', 'Share Tech Mono', 'Segoe UI', Arial, sans-serif;
+    letter-spacing: 1px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* 數字雨效果 */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(transparent 98%, rgba(0, 198, 255, 0.3) 100%),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 198, 255, 0.15) 2px,
+            rgba(0, 198, 255, 0.15) 4px
+        );
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.5;
+    animation: matrix 10s linear infinite;
+}
+
+@keyframes matrix {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100px); }
+}
+h1, h2, h3, .navbar-brand {
+    color: #00c6ff;
+    text-shadow: 
+        0 0 8px #00c6ff88,
+        0 0 16px #00c6ff44,
+        0 0 24px #0072ff33;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+    text-shadow: 
+        0 0 12px #00c6ff,
+        0 0 20px #00c6ff88,
+        0 0 30px #0072ff44;
+}
+
+h1::after, h2::after, h3::after, .navbar-brand::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00c6ff, transparent);
+    animation: scan 3s linear infinite;
+}
+
+@keyframes scan {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+.card {
+    color: #f8f9fa; /* 卡片內文字也設亮色 */
+}
+
+.navbar {
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #0f2027 0%, #2c5364 100%);
+    color: #e0eafc;
+    box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(0, 198, 255, 0.2);
+    border-bottom: 1px solid rgba(0, 198, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.navbar:hover {
+    box-shadow: 
+        0 6px 25px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(0, 198, 255, 0.3);
+}
+
+.navbar::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #00c6ff, transparent);
+    animation: navbar-scan 4s linear infinite;
+}
+
+@keyframes navbar-scan {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.card {
+    margin: 20px 0;
+    box-shadow: 
+        0 8px 32px 0 rgba(31, 38, 135, 0.37),
+        inset 0 0 20px rgba(0, 198, 255, 0.1);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 1rem;
+    background: 
+        linear-gradient(145deg, rgba(30, 32, 34, 0.95), rgba(20, 25, 40, 0.95)),
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 10px,
+            rgba(0, 198, 255, 0.03) 10px,
+            rgba(0, 198, 255, 0.03) 20px
+        );
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #00c6ff, #0072ff, #00c6ff);
+    border-radius: 1rem;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s;
+    background-size: 200% 200%;
+    animation: gradient-rotate 3s linear infinite;
+}
+
+@keyframes gradient-rotate {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.03);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+    box-shadow: 
+        0 0 28px #00c6ff99, 
+        0 8px 32px rgba(0,0,0,0.12),
+        inset 0 0 30px rgba(0, 198, 255, 0.15);
+    border-color: #00c6ff;
+    z-index: 10;
+}
+
+.card:hover::before {
+    opacity: 0.3;
+    animation: border-pulse 1.5s ease-in-out infinite;
+}
+
+.card:active {
+    transform: translateY(-4px) scale(1.01);
+    transition: all 0.1s ease;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.card .card-title {
+    transition: all 0.3s ease;
+}
+
+.card:hover .card-title {
+    color: #00c6ff;
+    text-shadow: 0 0 10px #00c6ff;
+}
+
+@keyframes border-pulse {
+    0% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+    100% { opacity: 0.3; }
+}
+
+.card {
+    background: rgba(30,32,34,0.98);
+    box-shadow: 0 0 24px #00c6ff44, 0 4px 24px rgba(0,0,0,0.08);
+    border-radius: 1rem;
+    border: 1px solid #00c6ff33;
+    color: #f8f9fa;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+.card:hover {
+    box-shadow: 0 0 32px #00c6ff99, 0 8px 32px #2575fc44;
+    transform: scale(1.03);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+.btn-custom {
+    background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+    color: #fff;
+    text-shadow: 0 0 8px #00c6ff;
+    box-shadow: 
+        0 0 16px #00c6ff66,
+        inset 0 0 10px rgba(255, 255, 255, 0.1);
+    border-radius: 2rem;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.btn-custom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn-custom:hover::before {
+    left: 100%;
+    animation: shine 0.5s ease-in-out;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) skewX(-20deg); }
+    100% { transform: translateX(200%) skewX(-20deg); }
+}
+
+.btn-custom:hover {
+    background: linear-gradient(90deg, #0072ff 0%, #00c6ff 100%);
+    box-shadow: 
+        0 0 24px #00c6ff99,
+        0 0 36px rgba(0, 114, 255, 0.5),
+        inset 0 0 15px rgba(255, 255, 255, 0.2);
+    transform: scale(1.08) rotateX(5deg);
+}
+
+.btn-custom:active {
+    transform: scale(0.96) rotateX(10deg);
+    box-shadow: 
+        0 0 16px #00c6ff66,
+        inset 0 0 20px rgba(0, 114, 255, 0.7);
+    transition: all 0.1s ease;
+}
+
+.btn-custom:active {
+    transform: scale(0.96);
+    box-shadow: 0 0 24px #00c6ff99;
+}
+
+.btn-neon {
+  background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  box-shadow: 
+    0 0 16px #00c6ff66, 
+    0 0 4px #0072ff88,
+    inset 0 0 8px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-neon::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  border-radius: 2rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn-neon:hover {
+  box-shadow: 
+    0 0 32px #00c6ffcc, 
+    0 0 8px #0072ffcc,
+    inset 0 0 12px rgba(255, 255, 255, 0.2);
+  transform: scale(1.08) rotateX(5deg);
+  animation: neon-pulse 1.5s infinite alternate;
+  z-index: 10;
+}
+
+.btn-neon:active {
+  transform: scale(0.96) rotateX(10deg);
+  transition: all 0.1s ease;
+}
+
+@keyframes neon-pulse {
+  from { box-shadow: 0 0 32px #00c6ffcc, 0 0 8px #0072ffcc; }
+  to { box-shadow: 0 0 40px #00c6ff, 0 0 16px #0072ff; }
+}
+
+.collapse.fade {
+  transition: opacity 0.5s;
+  opacity: 0;
+}
+.collapse.show.fade {
+  opacity: 1;
+}
+
+.card, .btn, .form-control {
+    border-radius: 1rem !important;
+}
+.mt-5, .mb-3 {
+    margin-top: 2rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.form-control {
+    background: rgba(30,32,34,0.95);
+    border: 1px solid rgba(0, 198, 255, 0.3);
+    transition: all 0.3s;
+    position: relative;
+}
+
+.form-control:focus {
+    box-shadow: 
+        0 0 0 0.2rem #00c6ff55,
+        0 0 15px rgba(0, 198, 255, 0.3);
+    border-color: #00c6ff;
+    background: rgba(40, 45, 60, 0.95);
+    transform: scale(1.02);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.form-control::placeholder {
+    color: rgba(224, 234, 252, 0.5);
+    transition: all 0.3s;
+}
+
+.form-control:focus::placeholder {
+    color: rgba(224, 234, 252, 0.8);
+    transform: scale(0.95);
+}
+
+.form-control::placeholder {
+    color: rgba(224, 234, 252, 0.5);
+}
+
+.toast {
+    border-radius: 1rem;
+    box-shadow: 0 2px 12px rgba(106,17,203,0.12);
+    font-weight: 500;
+}
+
+body, h1, h2, h3, .navbar-brand {
+    font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+    letter-spacing: 1px;
+}
+
+.form-label, .form-control {
+    color: #f8f9fa;
+}
+.form-control {
+    background: rgba(30,32,34,0.95);
+}
+
+/* FAQ 區塊深色美化 */
+.accordion-item {
+    background: rgba(30,32,34,0.98);
+    border-radius: 1rem;
+    box-shadow: 
+        0 2px 12px #00c6ff22,
+        inset 0 0 15px rgba(0, 198, 255, 0.05);
+    border: 1px solid #232526;
+    color: #f8f9fa;
+    transition: all 0.3s;
+}
+
+.accordion-item:hover {
+    box-shadow: 
+        0 4px 20px #00c6ff44,
+        inset 0 0 20px rgba(0, 198, 255, 0.1);
+    border-color: rgba(0, 198, 255, 0.3);
+}
+.accordion-button {
+    background: linear-gradient(90deg, #232526 0%, #414345 100%);
+    color: #00c6ff;
+    font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    width: 634.7%;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.accordion-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: #00c6ff;
+    transition: width 0.3s;
+}
+
+.accordion-button:not(.collapsed)::before {
+    width: 100%;
+    opacity: 0.2;
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+}
+.accordion-button:not(.collapsed) {
+    background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+    color: #fff;
+    box-shadow: 
+        0 0 8px #00c6ff88,
+        inset 0 0 15px rgba(255, 255, 255, 0.1);
+    animation: accordion-glow 2s ease-in-out infinite alternate;
+    transform: scale(1.01);
+}
+
+.accordion-button {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.accordion-button:hover {
+    transform: translateX(5px);
+    box-shadow: 
+        0 0 12px #00c6ff,
+        inset 0 0 20px rgba(255, 255, 255, 0.15);
+}
+
+@keyframes accordion-glow {
+    from { box-shadow: 0 0 8px #00c6ff88, inset 0 0 15px rgba(255, 255, 255, 0.1); }
+    to { box-shadow: 0 0 16px #00c6ff, inset 0 0 20px rgba(255, 255, 255, 0.2); }
+}
+.accordion-body {
+    background: rgba(30,32,34,0.95);
+    color: #f8f9fa;
+    border-radius: 0.5rem;
+}
+
+.hr-tech {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+  box-shadow: 
+    0 0 8px #00c6ff88,
+    0 0 16px rgba(0, 198, 255, 0.3);
+  margin: 2rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hr-tech::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: hr-scan 3s linear infinite;
+}
+
+@keyframes hr-scan {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  animation: fadeInUp 1s forwards;
+  animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* 添加滾動顯示動畫 */
+.fade-in-scroll {
+  opacity: 0;
+  transform: translateY(40px) scale(0.9);
+  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.fade-in-scroll.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 添加浮動動畫 */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.float-animation {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* 添加脈衝動畫 */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 198, 255, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(0, 198, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 198, 255, 0); }
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+/* 科技感動畫 - 電路板效果 */
+.tech-grid {
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-grid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(0, 198, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 198, 255, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0;
+  animation: grid-move 20s linear infinite;
+}
+
+@keyframes grid-move {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(40px, 40px); }
+}
+
+/* 科技感懸浮動畫 */
+.float-tech {
+  animation: float-tech 6s ease-in-out infinite;
+}
+
+@keyframes float-tech {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* 科技感脈衝效果 */
+.pulse-tech {
+  position: relative;
+}
+
+.pulse-tech::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  background: inherit;
+  filter: blur(10px);
+  opacity: 0.7;
+  z-index: -1;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.05); opacity: 0.3; }
+  100% { transform: scale(1); opacity: 0.7; }
+}
+
+/* ====== 新增互動效果樣式 ====== */
+
+/* 自定義鼠標樣式 */
+.custom-cursor {
+  width: 10px;
+  height: 10px;
+  background: #00c6ff;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease, background-color 0.3s ease;
+  mix-blend-mode: difference;
+}
+
+.cursor-follower {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #00c6ff;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0.5;
+}
+
+.custom-cursor.hover {
+  transform: scale(2);
+  background: #0072ff;
+}
+
+.cursor-follower.hover {
+  transform: scale(1.5);
+  border-color: #0072ff;
+  opacity: 0.8;
+}
+
+.custom-cursor.active {
+  transform: scale(0.8);
+  background: #ffffff;
+}
+
+.cursor-follower.active {
+  transform: scale(0.8);
+  opacity: 0.3;
+}
+
+/* 點擊波紋效果 */
+.ripple-effect {
+  position: fixed;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,198,255,0.4) 0%, rgba(0,198,255,0) 70%);
+  transform: scale(0);
+  animation: ripple-animation 0.6s ease-out;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* 打字機效果光標 */
+.typing-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1.2em;
+  background-color: #00c6ff;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Toast 動畫效果 */
+.tech-toast-enter {
+  animation: toast-slide-in 0.5s ease-out, toast-glow 0.5s ease-out;
+}
+
+@keyframes toast-slide-in {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toast-glow {
+  0% {
+    box-shadow: 0 0 5px rgba(0, 198, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 198, 255, 0.8), 0 0 30px rgba(0, 114, 255, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(0, 198, 255, 0.5);
+  }
+}
+
+/* 數字動畫效果 */
+.animated-number {
+  font-family: 'Orbitron', monospace;
+  font-weight: bold;
+  font-size: 2rem;
+  color: #00c6ff;
+  text-shadow: 0 0 10px rgba(0, 198, 255, 0.5);
+}
+
+/* 視差效果容器 */
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.parallax {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  will-change: transform;
+}
+
+/* 卡片懸停效果增強 */
+.card {
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px) rotateX(5deg) rotateZ(-1deg);
+}

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前端互動特效教學 | 神龍英雄科技部落格</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="icon" type="image/x-icon" href="32.png">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+</head>
+<body>
+    <!-- 粒子背景 -->
+    <div id="particles-js" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;"></div>
+    <div class="container position-relative">
+        <!-- 導覽列 -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded mt-4 mb-5 px-3">
+            <a class="navbar-brand fw-bold" href="index.html" style="font-family:'Orbitron',sans-serif;">神龍英雄部落格</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">首頁</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">關於我</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="articles.html">文章</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faqAccordion">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contactForm">聯絡</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <article class="mt-5">
+            <h1 class="fw-bold mb-4" style="font-family:'Orbitron',sans-serif; color:#00c6ff;">前端互動特效教學</h1>
+            <div class="mb-3 text-secondary">
+                <i class="bi bi-person"></i> 大智
+                <i class="bi bi-calendar"></i> 2025/08/15
+            </div>
+            <hr class="hr-tech">
+
+            <section class="mb-5">
+                <h2 class="h3 mb-4">為什麼互動特效很重要？</h2>
+                <p>在當今的網頁設計中，互動特效不僅僅是裝飾，它們能夠提升用戶體驗、引導用戶注意力、傳達品牌形象，甚至可以成為產品的核心功能。一個充滿互動性的網站能夠讓訪客留下深刻印象，提高參與度。</p>
+
+                <div class="row mb-4">
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100 bg-dark text-white">
+                            <div class="card-body text-center">
+                                <i class="bi bi-mouse display-4 text-primary mb-3"></i>
+                                <h5 class="card-title">提升用戶體驗</h5>
+                                <p class="card-text">流暢的互動特效能讓用戶感覺網站"響應迅速"，提供更直觀的操作體驗。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100 bg-dark text-white">
+                            <div class="card-body text-center">
+                                <i class="bi bi-eye display-4 text-warning mb-3"></i>
+                                <h5 class="card-title">引導注意力</h5>
+                                <p class="card-text">精心設計的動畫能夠引導用戶注意力，突出重要內容和操作按鈕。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100 bg-dark text-white">
+                            <div class="card-body text-center">
+                                <i class="bi bi-palette display-4 text-success mb-3"></i>
+                                <h5 class="card-title">傳達品牌形象</h5>
+                                <p class="card-text">獨特的互動風格能夠幫助塑造和傳達品牌個性，讓網站更具識別度。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h3 mb-4">基礎 CSS 互動特效</h2>
+                <div class="card mb-4 bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary"><i class="bi bi-arrow-repeat"></i> 過渡動畫</h5>
+                        <p class="card-text">使用 CSS transition 屬性為元素狀態變化添加平滑過渡效果。這是最簡單也最常用的動畫方式。</p>
+                        <pre><code>.button {
+  transition: all 0.3s ease;
+  background-color: #00c6ff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: #0072ff;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0,198,255,0.7);
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning"><i class="bi bi-play-circle"></i> 關鍵幀動畫</h5>
+                        <p class="card-text">使用 @keyframes 創建更複雜的動畫效果，可以控制動畫的每個階段，創建更加豐富的視覺效果。</p>
+                        <pre><code>@keyframes pulse {
+  0% { 
+    box-shadow: 0 0 0 0 rgba(0,198,255,0.7); 
+  }
+  70% { 
+    box-shadow: 0 0 0 10px rgba(0,198,255,0); 
+  }
+  100% { 
+    box-shadow: 0 0 0 0 rgba(0,198,255,0); 
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h3 mb-4">JavaScript 增強互動</h2>
+                <div class="card mb-4 bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary"><i class="bi bi-arrows-fullscreen"></i> 滾動觸發動畫</h5>
+                        <p class="card-text">使用 Intersection API 檢測元素是否進入視野，觸發相應動畫。這種技術在單頁應用和長頁面中非常實用。</p>
+                        <pre><code>const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => {
+  observer.observe(el);
+});</code></pre>
+                    </div>
+                </div>
+
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning"><i class="bi bi-mouse"></i> 自定義鼠標效果</h5>
+                        <p class="card-text">創建跟隨鼠標移動的互動元素，如自定義光標、視差效果等，能夠大大提升網站的互動性和趣味性。</p>
+                        <pre><code>// 創建自定義光標
+const cursor = document.createElement('div');
+cursor.classList.add('custom-cursor');
+document.body.appendChild(cursor);
+
+document.addEventListener('mousemove', (e) => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h3 mb-4">進階特效實例</h2>
+                <div class="card mb-4 bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary"><i class="bi bi-box"></i> 3D 卡片懸停效果</h5>
+                        <p class="card-text">使用 CSS transform 創建 3D 卡片懸停效果，讓卡片在鼠標懸停時產生立體旋轉效果，增加頁面的層次感。</p>
+                        <pre><code>.card {
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.card:hover {
+  transform: rotateY(10deg) rotateX(5deg);
+}
+
+.card img {
+  transition: transform 0.6s;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning"><i class="bi bi-bullseye"></i> 粒子背景互動</h5>
+                        <p class="card-text">使用 particles.js 創建互動粒子背景，粒子會跟隨鼠標移動，在鼠標點擊時產生反應，營造出科技感和動態感。</p>
+                        <pre><code>// 使用 particles.js 創建互動粒子背景
+particlesJS('particles-js', {
+  "particles": {
+    "number": { "value": 80 },
+    "color": { "value": "#00c6ff" },
+    "move": { "enable": true, "speed": 2 }
+  },
+  "interactivity": {
+    "events": {
+      "onhover": { "enable": true, "mode": "grab" },
+      "onclick": { "enable": true, "mode": "push" }
+    }
+  }
+});</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h3 mb-4">性能優化技巧</h2>
+                <div class="alert alert-info">
+                    <h5 class="alert-heading"><i class="bi bi-speedometer2"></i> 優化的重要性</h5>
+                    <p class="mb-0">互動特效雖然能提升用戶體驗，但如果實現不當，可能會導致頁面性能下降，特別是在移動設備上。以下是幾個關鍵的性能優化技巧：</p>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary">使用 will-change</h5>
+                                <p class="card-text">提前告知瀏覽器元素將會變化，讓瀏覽器優化渲染。但不要濫用，只在關鍵動畫上使用。</p>
+                                <pre><code>.animated-element {
+  will-change: transform, opacity;
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 border-warning">
+                            <div class="card-body">
+                                <h5 class="card-title text-warning">避免過度動畫</h5>
+                                <p class="card-text">確保動畫不會導致頁面性能下降，特別是在移動設備上。避免同時運行多個複雜動畫。</p>
+                                <pre><code>// 使用 requestAnimationFrame 優化動畫性能
+function animate() {
+  requestAnimationFrame(animate);
+  // 動畫邏輯
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 border-success">
+                            <div class="card-body">
+                                <h5 class="card-title text-success">使用 transform 和 opacity</h5>
+                                <p class="card-text">這些屬性不會觸發整個頁面的重排，性能更好。盡量避免使用會觸發重排的屬性，如 width、height、top、left 等。</p>
+                                <pre><code>.good-animation {
+  /* 優化 - 只觸發合成層 */
+  transform: translateX(100px);
+  opacity: 0.5;
+}
+
+.bad-animation {
+  /* 避免 - 會觸發重排 */
+  left: 100px;
+  width: 50%;
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 border-info">
+                            <div class="card-body">
+                                <h5 class="card-title text-info">節流和防抖</h5>
+                                <p class="card-text">對滾動和調整大小等頻繁觸發的事件使用節流或防抖技術，避免過多的計算和渲染。</p>
+                                <pre><code>// 節流函數
+function throttle(func, limit) {
+  let inThrottle;
+  return function() {
+    const args = arguments;
+    const context = this;
+    if (!inThrottle) {
+      func.apply(context, args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
+    }
+  }
+}
+
+// 使用節流優化滾動事件
+window.addEventListener('scroll', throttle(handleScroll, 100));</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="alert alert-success mt-5">
+                <i class="bi bi-tools"></i> <strong>實用工具推薦：</strong>嘗試使用 GSAP、Three.js 或 AOS 等庫來簡化開發過程，它們提供了豐富的預設效果和優化的性能。
+            </div>
+        </article>
+
+        <!-- 留言區 -->
+        <div class="card mt-5 p-4 shadow">
+            <h4 class="mb-3" style="font-family:'Orbitron',sans-serif; color:#00c6ff;">留言區</h4>
+            <form id="commentForm" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="commentName" class="form-label">暱稱</label>
+                    <input type="text" class="form-control" id="commentName" required>
+                    <div class="invalid-feedback">請輸入暱稱。</div>
+                </div>
+                <div class="mb-3">
+                    <label for="commentContent" class="form-label">留言內容</label>
+                    <textarea class="form-control" id="commentContent" rows="3" required></textarea>
+                    <div class="invalid-feedback">請輸入留言。</div>
+                </div>
+                <button type="submit" class="btn btn-neon w-100">送出留言</button>
+            </form>
+            <div id="commentList" class="mt-4"></div>
+        </div>
+
+        <a href="articles.html" class="btn btn-neon mt-4">返回文章列表</a>
+    </div>
+
+    <!-- 頁尾 -->
+    <footer class="footer mt-5 text-center py-3">
+        © 2025 神龍英雄科技部落格 | 由 神龍小英雄 製作
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main_fixed.js"></script>
+    <script>
+    // 留言區互動
+    const commentForm = document.getElementById('commentForm');
+    const commentList = document.getElementById('commentList');
+    if (commentForm) {
+        commentForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            if (commentForm.checkValidity()) {
+                const name = document.getElementById('commentName').value || '匿名';
+                const content = document.getElementById('commentContent').value;
+                const commentItem = document.createElement('div');
+                commentItem.className = 'border-bottom py-2';
+                commentItem.innerHTML = `<strong style="color:#00c6ff;">${name}</strong>：${content}`;
+                commentList.prepend(commentItem);
+                commentForm.reset();
+                commentForm.classList.remove('was-validated');
+            } else {
+                commentForm.classList.add('was-validated');
+            }
+        });
+    }
+
+    // 初始化粒子背景
+    particlesJS('particles-js', {
+      "particles": {
+        "number": { "value": 80 },
+        "color": { "value": "#00c6ff" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.6 },
+        "size": { "value": 3 },
+        "line_linked": {
+          "enable": true,
+          "distance": 130,
+          "color": "#00c6ff",
+          "opacity": 0.5,
+          "width": 1.2
+        },
+        "move": { "enable": true, "speed": 2.5 }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": { "enable": true, "mode": "grab" },
+          "onclick": { "enable": true, "mode": "push" }
+        },
+        "modes": {
+          "grab": { "distance": 150, "line_linked": { "opacity": 0.8 } },
+          "push": { "particles_nb": 4 }
+        }
+      },
+      "retina_detect": true
+    });
+    </script>
+</body>
+</html>
